@@ -1,4 +1,5 @@
-ecommerce-lp-proj
-=================
+Ecommerce LP CSD Project
+========================
 
-Ecommerce project for LP CSD - 2012
+Ecommerce application created for 2012 LP CSD web project.
+More updates to come :)
