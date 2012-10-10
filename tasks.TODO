@@ -1,0 +1,38 @@
+E-Commerce Stuff To Do:
+
+Utilisateurs:
+ ☐ Faire la page d'acceuil
+ ☐ Page d'inscription
+ ☐ Confirmation d'inscription
+ ☐ Page de connexion
+ ☐ Controller de déconnexion
+ ☐ Page de modification du profil
+
+Admin:
+ ☐ Gestion des utilisateurs
+ ☐ Categories
+ ☐ Articles
+ ☐ Pays
+ ☐ Commandes
+ ☐ Stats du site
+
+Articles:
+ ☐ Categories
+ ☐ Sous-categories
+ ☐ Articles
+
+Panier:
+ ☐ Page panier
+ ☐ Choix de quantité d'articles
+ ☐ Page paiement
+ ☐ Creation de compte / connexion avant passage a la page de paiement
+
+Recherche:
+ ☐ Recherche avec Twitter Bootstrap
+ ☐ Recherche avancee
+
+Emails:
+ ☐ Email de confirmation d'inscription
+ ☐ Email facture
+
+
