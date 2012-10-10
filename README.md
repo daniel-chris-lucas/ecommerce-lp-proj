@@ -1,5 +1,7 @@
-koukou ^^
+LP CSD: E-Commerce Project
+==========================
 
-modifié
+E-commerce site made in php built on the amazing FuelPHP framework.
+Built by Daniel LUCAS & Severine STEMPIN
 
-et re modifié ^^''
+Updates coming soon
