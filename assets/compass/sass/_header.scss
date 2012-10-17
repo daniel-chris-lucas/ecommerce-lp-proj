@@ -75,6 +75,7 @@ header {
 	text-indent: 74px;
 	line-height: 30px;
 	@include single-text-shadow( 1px, 1px, 1px, false, #fff );
+	@include transition-duration( .4s );
 
 	&:hover { text-decoration: none; }
 }
