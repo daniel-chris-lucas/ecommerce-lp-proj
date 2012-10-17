@@ -14,7 +14,7 @@ class Controller_Home extends Controller_Template
 	public function action_404()
 	{
 		$this->template->title = 'Home &raquo; 404';
-		$this->template->content = View::forge('home/404');
+		return new Response( View::forge( 'home/404' ) );
 	}
 
 }
