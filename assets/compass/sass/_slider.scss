@@ -1,0 +1,80 @@
+#slider {
+	height: 537px;
+	position: relative;
+}
+
+.slider-nav {
+	@extend .hide-text;
+	display: block;
+	width: 50px;
+	height: 54px;
+	position: absolute;
+	margin-top: 183px;
+}
+
+.slider_prev {
+	@extend .slider-nav;
+	background: url(../img/slider-prev.png);
+}
+
+.slider_next {
+	@extend .slider-nav;
+	background: url(../img/slider-next.png);
+	right: 0;
+}
+
+.left_part {
+	margin-left: 70px;
+	padding-top: 20px;
+	float: left;
+	width: 405px;
+}
+
+.right_part {
+	float: left;
+	width: 635px;
+	white-space: normal;
+
+	h1 {
+		color: #38414b;
+		font-size: 36px;
+		width: 520px;
+		margin-top: 90px;
+		@include single-text-shadow( 1px, 1px, 1px, false, #fff );
+		line-height: 40px;
+	}
+
+	.product_description {
+		color: #7e8a97;
+		width: 520px;
+		font-size: 16px;
+		padding: 20px 0;
+	}
+}
+
+.discount_sticker {
+	background: url(../img/discount.png);
+	width: 117px;
+	height: 119px;
+	right: 80px;
+	margin-top: 20px;
+	position: absolute;
+
+	.old {
+		font-size: 18px;
+		color: #c4cbd1;
+		display: block;
+		margin-left: 35px;
+		margin-top: 20px;
+		text-decoration: line-through;
+	}
+
+	.new {
+		font-size: 36px;
+		color: #39b3ca;
+		font-weight: bold;
+		display: block;
+		margin-left: 15px;
+		margin-top: 6px;
+	}
+}

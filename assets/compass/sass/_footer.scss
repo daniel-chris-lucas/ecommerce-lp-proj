@@ -1,0 +1,157 @@
+#footer_top {
+	height: 318px;
+	background: url(../img/featured-bg.png) repeat;
+
+	.container>.span4 {
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+
+	ul { list-style: none; margin-left: 0; }
+
+	&>li, .tweets li {
+		font-size: 13px;
+		color: #696f74;
+		padding-bottom: 20px;
+
+		span { color: #969da3; }
+	}
+
+	p {
+		color: #838b91;
+		font-size: 13px;
+	}
+
+	label {
+		font-size: 13px;
+		color: #363d47;
+	}
+
+	input { width: 86%; }
+
+	a {
+		@include transition-duration( .6s );
+		&:hover { text-decoration: none; }
+	}
+}
+
+.follow_twitter {
+	display: block;
+	background: #fff;
+	@include transition-duration( .4s );
+	@include border-radius( 4px );
+	@include single-box-shadow( rgba(0, 0, 0, .4), 1px, 1px, 0 );
+	width: 195px;
+	height: 38px;
+	position: relative;
+	text-indent: 48px;
+	line-height: 38px;
+	color: #292820;
+	font-size: 13px;
+
+	&:hover {
+		text-decoration: none;
+		@include single-box-shadow( rgba(0, 0, 0, .4), 2px, 2px, 8px );
+
+		span { background-position: 0 -22px; }
+	}
+
+	span {
+		@extend .hide-text;
+		display: inline-block;
+		width: 31px;
+		height: 22px;
+		background: url(../img/twitter.png) no-repeat;
+		position: absolute;
+		top: 8px;
+		left: 8px;
+	}
+}
+
+.contact_means {
+	li {
+		background: url(../img/contact-icons.png) no-repeat;
+		padding-left: 60px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		line-height: 18px;
+		border-bottom: 1px dashed #c2cbd2;
+		padding-bottom: 12px;
+		margin-bottom: 8px;
+
+		&.contact_fixed {
+			background-position: 0 -151px;
+		}
+
+		&.contact_mobile {
+			background-position: 0 -74px;
+		}
+
+		&:last-child { border-bottom: none; }
+	}
+}
+
+#footer_bottom {
+	padding-top: 36px;
+	font-size: 13px;
+	color: #565f67;
+
+	#footer_menu {
+		ul { margin: 0; padding-bottom: 5px; }
+
+		li {
+			display: inline-block;
+			padding-right: 15px;
+			padding-left: 3px;
+			background: url(../img/footer-menu-separator.png) no-repeat right;
+
+			&:last-child { background: none; }
+
+			&:first-child { padding-left: 0; }
+		}
+
+		a {
+			color: #565f67;
+
+			&:hover {
+				color: #1c1f23;
+			}
+		}
+	}
+
+	a {
+		@include transition-duration( .6s );
+		text-decoration: none;
+	}
+
+	.accepted_payments {
+		@extend .hide-text;
+		width: 189px;
+		height: 42px;
+		background: url(../img/payment-methods.png) no-repeat;
+	}
+
+	.follow {
+		text-align: right;
+		margin-top: -12px;
+		
+		li {
+			display: inline;
+
+			a {
+				display: inline-block;
+				@extend .hide-text;
+				width: 24px;
+				height: 28px;
+				background: url(../img/follow.png) no-repeat;
+
+				&.twitter { background-position: -24px 0; }
+				&.facebook { background-position: 0 0; }
+				&.rss { background-position: -72px 0; }
+
+				&:hover { background-position-y: -28px; }
+			}
+		}
+	}
+}

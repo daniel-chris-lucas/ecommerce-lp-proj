@@ -1,0 +1,80 @@
+header {
+	background: url(../img/header-bg.png) repeat-x;
+	overflow: hidden;
+	height: 111px;
+
+	h1 {
+		a {
+			@extend .hide-text;
+			display: block;
+			background: url(../img/shop-logo.png) no-repeat;
+			width: 237px;
+			height: 38px;
+			margin-left: 20px;
+		}
+	}
+}
+
+.search {
+	@extend .hide-text;
+	float: right;
+	display: block;
+	width: 44px;
+	height: 44px;
+	background: url(../img/search.png);
+	margin-top: 7px;
+
+	&:hover {
+		background-position: 0 -46px;
+	}
+}
+
+.search_toggle {
+	display: none;
+}
+
+.login_register {
+	font-size: 12px;
+	@include background-image( linear-gradient( #464e5b, #3d454e ) );
+	@include border-radius( 5px );
+	@include single-box-shadow( rgba(255, 255, 255, .2), 0, 2px, 2px, 0, inset );
+	padding: 5px 10px;
+	float: right;
+	margin-right: 15px;
+	margin-top: 13px;
+	color: #e9edf0;
+
+	span {
+		color: #939ba7;
+	}
+
+	&:hover {
+		color: #e9edf0;
+		text-decoration: none;
+		@include background-image( linear-gradient( #3d454e, #464e5b ) );
+		@include single-box-shadow( rgba(255, 255, 255, .2), 0, -2px, 2px, 0, inset );
+	}
+}
+
+#currency {
+	float: right;
+	margin-right: 15px;
+	margin-top: 13px;
+}
+
+.cart_status {
+	display: block;
+	width: 151px;
+	height: 29px;
+	float: right;
+	background: url(../img/cart.png) no-repeat;
+	color: #1089a1;
+	text-decoration: none;
+	font-size: 13px;
+	margin-top: 14px;
+	text-indent: 74px;
+	line-height: 30px;
+	@include single-text-shadow( 1px, 1px, 1px, false, #fff );
+
+	&:hover { text-decoration: none; }
+}
