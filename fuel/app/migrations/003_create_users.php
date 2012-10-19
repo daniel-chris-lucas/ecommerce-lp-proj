@@ -20,13 +20,33 @@ class Create_users
 			'tel' => array('constraint' => 20, 'type' => 'varchar'),
 			'email' => array('constraint' => 45, 'type' => 'varchar'),
 			'role_id' => array('constraint' => 2, 'type' => 'int'),
-			'order_id' => array('constraint' => 11, 'type' => 'int'),
 			'confirmation_code' => array('constraint' => 16, 'type' => 'varchar'),
 			'activated' => array('type' => 'boolean'),
 			'created_at' => array('constraint' => 11, 'type' => 'int'),
 			'updated_at' => array('constraint' => 11, 'type' => 'int'),
 
-		), array('id'));
+		), array('id'), true, false, null, array(
+			array(
+				'constraint' => 'constUsersCountries',
+				'key' => 'country_id',
+				'reference' => array(
+					'table' => 'countries',
+					'column' => 'id',
+				),
+				'on_update' => 'CASCADE',
+				'on_delete' => 'RESTRICT'
+			),
+			array(
+				'constraint' => 'constUsersRoles',
+				'key' => 'role_id',
+				'reference' => array(
+					'table' => 'roles',
+					'column' => 'id',
+				),
+				'on_update' => 'CASCADE',
+				'on_delete' => 'RESTRICT'
+			),
+		));
 	}
 
 	public function down()

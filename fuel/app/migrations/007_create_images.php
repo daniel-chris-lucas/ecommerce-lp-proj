@@ -12,7 +12,18 @@ class Create_images
 			'alt' => array('constraint' => 255, 'type' => 'varchar'),
 			'product_id' => array('constraint' => 11, 'type' => 'int'),
 
-		), array('id'));
+		), array('id'), true, false, null, array(
+			array(
+				'constraint' => 'constImagesProducts',
+				'key' => 'product_id',
+				'reference' => array(
+					'table' => 'products',
+					'column' => 'id',
+				),
+				'on_update' => 'CASCADE',
+				'on_delete' => 'RESTRICT'
+			),
+		));
 	}
 
 	public function down()
