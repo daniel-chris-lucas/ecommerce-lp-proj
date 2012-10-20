@@ -16,5 +16,5 @@ class Controller_Home extends Controller_Template
 		$this->template->title = 'Home &raquo; 404';
 		return new Response( View::forge( 'home/404' ) );
 	}
-
+\
 }

@@ -4,6 +4,8 @@ body {
 	padding-bottom: 20px;
 }
 
+#main.span12 { float: none; margin-left: 30px; }
+
 .title {
 	font-size: 22px;
 	color: #363d47;
@@ -67,4 +69,8 @@ body {
 			border-bottom: none;
 		}
 	}
+}
+
+#main, .sidebar {
+	float: right;
 }

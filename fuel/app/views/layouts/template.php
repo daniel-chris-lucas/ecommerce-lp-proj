@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Shopping</title>
+        <title><?php echo $title ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         
@@ -44,7 +44,7 @@
                                 <input id="word_search" placeholder="Type keyword and hit enter">
                             </form>
                         </div>
-                        <a href="" class="login_register">Login <span>-- or --</span> Register</a>
+                        <a href="<?php echo Uri::create( 'users/connect' ) ?>" class="login_register">Login <span>-- or --</span> Register</a>
                         <select id="currency">
                             <option value="euros">Euros</option>
                             <option value="GB Pounds">GB Pounds</option>
@@ -88,238 +88,18 @@
         </div>
         <!-- end menu under shopping cart -->
         
-        <!-- start slider -->
-        <div class="row">
-            <div class="container">
-                <div class="span12" id="slider">
-                    <a href="#" class="slider_prev">Prev</a>
-                    <a href="#" class="slider_next">Next</a>
-                    <div class="left_part">
-                        <?php echo Asset::img( 'example-product.png', array( 'alt' => 'Example Product' ) ) ?>
-                    </div>
-                    <div class="right_part">
-                        <div class="discount_sticker">
-                            <span class="old">$199</span>
-                            <span class="new">$122</span>
-                        </div>
-                        <h1>Stylish Jacket, be your best deal</h1>
-                        <div class="product_description">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ab iure nihil quidem odit architecto temporibus aperiam nobis rerum..
-                        </div>
-                        <a href="#" class="btn btn-large btn-danger">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end slider -->
+        <?php if( Uri::String() === '' ) echo View::forge( 'layouts/slider' ) ?>
         
-        <!-- start featured products -->
-        <div class="row" id="featured_products">
-            <div class="container">
-                <div class="span9">
-                    <div class="title_bg">
-                        <h2 class="title">Featured Products</h2>
-                    </div>
-                </div>
-                <div class="span2" style="float: right;">                    
-                    <div class="controls">
-                        <a href="#" class="control_prev">Prev</a>
-                        <a href="#" class="control_next">Next</a>
-                    </div>
-                </div>
-                <ul class="span12">
-                    <li class="span3">
-                        <article>
-                            <figure>
-                                <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                <figcaption>
-                                    Nikon Camera<br>
-                                    <span>Item no: 1422</span>
-                                </figcaption>
-                            </figure>
-                            <span class="price">
-                                $199
-                            </span>
-                        </article>
-                    </li>
-                    <li class="span3">
-                        <article>
-                            <figure>
-                                <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                <figcaption>
-                                    Special Gift<br>
-                                    <span>Item no: 1455</span>
-                                </figcaption>
-                            </figure>
-                            <span class="price">
-                                $199
-                            </span>
-                        </article>
-                    </li>
-                    <li class="span3">
-                        <article>
-                            <figure>
-                                <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                <figcaption>
-                                    Adidas Shoes<br>
-                                    <span>Item no: 0166</span>
-                                </figcaption>
-                            </figure>
-                            <span class="price">
-                                $199
-                            </span>
-                        </article>
-                    </li>
-                    <li class="span3">
-                        <article>
-                            <figure>
-                                <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                <figcaption>
-                                    Nikon Camera<br>
-                                    <span>Item no: 1422</span>
-                                </figcaption>
-                            </figure>
-                            <span class="price">
-                                $199
-                            </span>
-                        </article>
-                    </li>
-                </ul>
-            </div>            
-        </div>
-        <!-- end featured products -->
+        <?php if( Uri::String() === '' ) echo View::forge( 'layouts/featured-products' ) ?>
         
         <!-- start about + latest products -->
         <div class="row">
             <div class="container">
-                <div id="main" class="span9 about" role="main">
-                    <!-- start about the site -->
-                    <div class="title_bg">
-                        <h2 class="title">About Shopping</h2>
-                    </div>
-                    
-                    <article>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero suscipit nostrum in laudantium amet autem sapiente voluptates. Labore neque aut atque sunt fuga dolore expedita consequuntur eius pariatur consectetur saepe debitis aliquid laborum omnis soluta id fugiat vero nulla vel nemo sed asperiores quidem unde doloribus laboriosam mollitia aspernatur odio tenetur quo delectus eum dolor dolores quaerat iste enim voluptates necessitatibus! Suscipit totam dolorem laborum quo saepe officiis necessitatibus.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus consequatur assumenda non tempora illo libero perspiciatis! Dolor sequi eius dolorum voluptatem officiis in repellendus? Nobis facilis tempore ad quidem sequi.
-                        </p>
-                        
-                        <a href="#" class="btn btn-danger">Read More</a>
-                    </article>
-                    <!-- end about the site  -->
-                    
-                    <!-- start latest products -->
-                    <div class="title_bg" style="margin-top: 15px;">
-                        <h2 class="title">Latest Products</h2>
-                    </div>
-                    
-                    <div id="latest_products">
-                        <ul class="clearfix">
-                            <li class="span3">
-                                <article>
-                                    <figure>
-                                        <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                        <figcaption>
-                                            Adidas Shoes<br>
-                                            <span>Item no: 0166</span>
-                                        </figcaption>
-                                    </figure>
-                                    <span class="price">
-                                        $199
-                                    </span>
-                                </article>
-                            </li>
-                            <li class="span3">
-                                <article>
-                                    <figure>
-                                        <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                        <figcaption>
-                                            Adidas Shoes<br>
-                                            <span>Item no: 0166</span>
-                                        </figcaption>
-                                    </figure>
-                                    <span class="price">
-                                        $199
-                                    </span>
-                                </article>
-                            </li>
-                            <li class="span3">
-                                <article>
-                                    <figure>
-                                        <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                        <figcaption>
-                                            Adidas Shoes<br>
-                                            <span>Item no: 0166</span>
-                                        </figcaption>
-                                    </figure>
-                                    <span class="price">
-                                        $199
-                                    </span>
-                                </article>
-                            </li>
-                            <li class="span3">
-                                <article>
-                                    <figure>
-                                        <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                        <figcaption>
-                                            Adidas Shoes<br>
-                                            <span>Item no: 0166</span>
-                                        </figcaption>
-                                    </figure>
-                                    <span class="price">
-                                        $199
-                                    </span>
-                                </article>
-                            </li>
-                            <li class="span3">
-                                <article>
-                                    <figure>
-                                        <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                        <figcaption>
-                                            Adidas Shoes<br>
-                                            <span>Item no: 0166</span>
-                                        </figcaption>
-                                    </figure>
-                                    <span class="price">
-                                        $199
-                                    </span>
-                                </article>
-                            </li>
-                            <li class="span3">
-                                <article>
-                                    <figure>
-                                        <?php echo Asset::img( 'featured-img.jpg', array( 'alt' => '' ) ) ?>
-                                        <figcaption>
-                                            Adidas Shoes<br>
-                                            <span>Item no: 0166</span>
-                                        </figcaption>
-                                    </figure>
-                                    <span class="price">
-                                        $199
-                                    </span>
-                                </article>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end latest products -->
+                <?php if( Uri::segment(1) !== 'users' ) echo View::forge( 'layouts/sidebar' ) ?>
+                
+                <div id="main" class="<?php echo ( Uri::segment(1) == 'users' ) ? 'span12' : 'span9' ?> about" role="main">
+                    <?php echo $content ?>
                 </div>
-                <aside class="span3">
-                    <div class="title_bg">
-                        <h2 class="title">Categories</h2>
-                    </div>
-                    
-                    <ul id="category_box">
-                        <li><a href="#">Women's Accessories</a></li>
-                        <li><a href="#">Men's Shoes</a></li>
-                        <li><a href="#">Gift Specials</a></li>
-                        <li><a href="#">Electronics</a></li>
-                        <li><a href="#">On Sale</a></li>
-                        <li><a href="#">Summer Specials</a></li>
-                        <li><a href="#">Unique Stuff</a></li>
-                    </ul>
-                </aside>
             </div>
         </div>
         <!-- end about + latest products -->

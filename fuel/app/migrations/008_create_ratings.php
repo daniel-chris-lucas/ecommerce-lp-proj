@@ -11,7 +11,7 @@ class Create_ratings
 			'user_id' => array('constraint' => 11, 'type' => 'int'),
 			'product_id' => array('constraint' => 11, 'type' => 'int'),
 			'note' => array('constraint' => 2, 'type' => 'int'),
-			'description' => array('type' => 'text'),
+			'description' => array('type' => 'text', 'null' => true),
 			'created_at' => array('constraint' => 11, 'type' => 'int'),
 			'updated_at' => array('constraint' => 11, 'type' => 'int'),
 

@@ -8210,6 +8210,12 @@ body {
 }
 
 /* line 7, ../compass/sass/_miscellaneous.scss */
+#main.span12 {
+  float: none;
+  margin-left: 30px;
+}
+
+/* line 9, ../compass/sass/_miscellaneous.scss */
 .title {
   font-size: 22px;
   color: #363d47;
@@ -8221,25 +8227,25 @@ body {
   position: relative;
   top: 10px;
 }
-/* line 18, ../compass/sass/_miscellaneous.scss */
+/* line 20, ../compass/sass/_miscellaneous.scss */
 #featured_products .title, #latest_products .title, #footer_top .title {
   background: url(../img/dark-bg.png);
   top: 18px;
 }
 
-/* line 24, ../compass/sass/_miscellaneous.scss */
+/* line 26, ../compass/sass/_miscellaneous.scss */
 .title_bg {
   position: relative;
   background: url(../img/shizzle.png) repeat-x bottom;
   margin-top: 5px;
   margin-bottom: 20px;
 }
-/* line 30, ../compass/sass/_miscellaneous.scss */
+/* line 32, ../compass/sass/_miscellaneous.scss */
 #featured_products .title_bg, #latest_products .title_bg, #footer_top .title_bg {
   background: url(../img/shizzle-dark.png) repeat-x bottom;
 }
 
-/* line 35, ../compass/sass/_miscellaneous.scss */
+/* line 37, ../compass/sass/_miscellaneous.scss */
 .about {
   margin: 0;
   font-size: 13px;
@@ -8247,7 +8253,7 @@ body {
   line-height: 22px;
 }
 
-/* line 42, ../compass/sass/_miscellaneous.scss */
+/* line 44, ../compass/sass/_miscellaneous.scss */
 #category_box {
   background: white;
   -webkit-border-radius: 4px;
@@ -8261,7 +8267,7 @@ body {
   border-bottom: 1px solid #c2cbd2;
   list-style: none;
 }
-/* line 51, ../compass/sass/_miscellaneous.scss */
+/* line 53, ../compass/sass/_miscellaneous.scss */
 #category_box li {
   height: 38px;
   border-bottom: 1px dashed #c2cbd2;
@@ -8270,7 +8276,7 @@ body {
   text-indent: 20px;
   line-height: 35px;
 }
-/* line 59, ../compass/sass/_miscellaneous.scss */
+/* line 61, ../compass/sass/_miscellaneous.scss */
 #category_box li a {
   color: #495258;
   -webkit-transition-duration: 0.6s;
@@ -8278,14 +8284,19 @@ body {
   -o-transition-duration: 0.6s;
   transition-duration: 0.6s;
 }
-/* line 63, ../compass/sass/_miscellaneous.scss */
+/* line 65, ../compass/sass/_miscellaneous.scss */
 #category_box li a:hover {
   color: #39b3ca;
   text-decoration: none;
 }
-/* line 66, ../compass/sass/_miscellaneous.scss */
+/* line 68, ../compass/sass/_miscellaneous.scss */
 #category_box li:last-child {
   border-bottom: none;
+}
+
+/* line 74, ../compass/sass/_miscellaneous.scss */
+#main, .sidebar {
+  float: right;
 }
 
 /* line 1, ../compass/sass/_header.scss */
@@ -8679,53 +8690,54 @@ header h1 a {
 #footer_top {
   height: 318px;
   background: url(../img/featured-bg.png) repeat;
+  margin-top: 20px;
 }
-/* line 6, ../compass/sass/_footer.scss */
+/* line 7, ../compass/sass/_footer.scss */
 #footer_top .container > .span4:first-child {
   margin-left: 0;
 }
-/* line 11, ../compass/sass/_footer.scss */
+/* line 12, ../compass/sass/_footer.scss */
 #footer_top ul {
   list-style: none;
   margin-left: 0;
 }
-/* line 13, ../compass/sass/_footer.scss */
+/* line 14, ../compass/sass/_footer.scss */
 #footer_top > li, #footer_top .tweets li {
   font-size: 13px;
   color: #696f74;
   padding-bottom: 20px;
 }
-/* line 18, ../compass/sass/_footer.scss */
+/* line 19, ../compass/sass/_footer.scss */
 #footer_top > li span, #footer_top .tweets li span {
   color: #969da3;
 }
-/* line 21, ../compass/sass/_footer.scss */
+/* line 22, ../compass/sass/_footer.scss */
 #footer_top p {
   color: #838b91;
   font-size: 13px;
 }
-/* line 26, ../compass/sass/_footer.scss */
+/* line 27, ../compass/sass/_footer.scss */
 #footer_top label {
   font-size: 13px;
   color: #363d47;
 }
-/* line 31, ../compass/sass/_footer.scss */
+/* line 32, ../compass/sass/_footer.scss */
 #footer_top input {
   width: 86%;
 }
-/* line 33, ../compass/sass/_footer.scss */
+/* line 34, ../compass/sass/_footer.scss */
 #footer_top a {
   -webkit-transition-duration: 0.6s;
   -moz-transition-duration: 0.6s;
   -o-transition-duration: 0.6s;
   transition-duration: 0.6s;
 }
-/* line 35, ../compass/sass/_footer.scss */
+/* line 36, ../compass/sass/_footer.scss */
 #footer_top a:hover {
   text-decoration: none;
 }
 
-/* line 39, ../compass/sass/_footer.scss */
+/* line 40, ../compass/sass/_footer.scss */
 .follow_twitter {
   display: block;
   background: #fff;
@@ -8749,18 +8761,18 @@ header h1 a {
   color: #292820;
   font-size: 13px;
 }
-/* line 53, ../compass/sass/_footer.scss */
+/* line 54, ../compass/sass/_footer.scss */
 .follow_twitter:hover {
   text-decoration: none;
   -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
 }
-/* line 57, ../compass/sass/_footer.scss */
+/* line 58, ../compass/sass/_footer.scss */
 .follow_twitter:hover span {
   background-position: 0 -22px;
 }
-/* line 60, ../compass/sass/_footer.scss */
+/* line 61, ../compass/sass/_footer.scss */
 .follow_twitter span {
   display: inline-block;
   width: 31px;
@@ -8771,7 +8783,7 @@ header h1 a {
   left: 8px;
 }
 
-/* line 73, ../compass/sass/_footer.scss */
+/* line 74, ../compass/sass/_footer.scss */
 .contact_means li {
   background: url(../img/contact-icons.png) no-repeat;
   padding-left: 60px;
@@ -8782,54 +8794,54 @@ header h1 a {
   padding-bottom: 12px;
   margin-bottom: 8px;
 }
-/* line 83, ../compass/sass/_footer.scss */
+/* line 84, ../compass/sass/_footer.scss */
 .contact_means li.contact_fixed {
   background-position: 0 -151px;
 }
-/* line 87, ../compass/sass/_footer.scss */
+/* line 88, ../compass/sass/_footer.scss */
 .contact_means li.contact_mobile {
   background-position: 0 -74px;
 }
-/* line 91, ../compass/sass/_footer.scss */
+/* line 92, ../compass/sass/_footer.scss */
 .contact_means li:last-child {
   border-bottom: none;
 }
 
-/* line 95, ../compass/sass/_footer.scss */
+/* line 96, ../compass/sass/_footer.scss */
 #footer_bottom {
   padding-top: 36px;
   font-size: 13px;
   color: #565f67;
 }
-/* line 101, ../compass/sass/_footer.scss */
+/* line 102, ../compass/sass/_footer.scss */
 #footer_bottom #footer_menu ul {
   margin: 0;
   padding-bottom: 5px;
 }
-/* line 103, ../compass/sass/_footer.scss */
+/* line 104, ../compass/sass/_footer.scss */
 #footer_bottom #footer_menu li {
   display: inline-block;
   padding-right: 15px;
   padding-left: 3px;
   background: url(../img/footer-menu-separator.png) no-repeat right;
 }
-/* line 109, ../compass/sass/_footer.scss */
+/* line 110, ../compass/sass/_footer.scss */
 #footer_bottom #footer_menu li:last-child {
   background: none;
 }
-/* line 111, ../compass/sass/_footer.scss */
+/* line 112, ../compass/sass/_footer.scss */
 #footer_bottom #footer_menu li:first-child {
   padding-left: 0;
 }
-/* line 114, ../compass/sass/_footer.scss */
+/* line 115, ../compass/sass/_footer.scss */
 #footer_bottom #footer_menu a {
   color: #565f67;
 }
-/* line 117, ../compass/sass/_footer.scss */
+/* line 118, ../compass/sass/_footer.scss */
 #footer_bottom #footer_menu a:hover {
   color: #1c1f23;
 }
-/* line 123, ../compass/sass/_footer.scss */
+/* line 124, ../compass/sass/_footer.scss */
 #footer_bottom a {
   -webkit-transition-duration: 0.6s;
   -moz-transition-duration: 0.6s;
@@ -8837,41 +8849,41 @@ header h1 a {
   transition-duration: 0.6s;
   text-decoration: none;
 }
-/* line 128, ../compass/sass/_footer.scss */
+/* line 129, ../compass/sass/_footer.scss */
 #footer_bottom .accepted_payments {
   width: 189px;
   height: 42px;
   background: url(../img/payment-methods.png) no-repeat;
 }
-/* line 135, ../compass/sass/_footer.scss */
+/* line 136, ../compass/sass/_footer.scss */
 #footer_bottom .follow {
   text-align: right;
   margin-top: -12px;
 }
-/* line 139, ../compass/sass/_footer.scss */
+/* line 140, ../compass/sass/_footer.scss */
 #footer_bottom .follow li {
   display: inline;
 }
-/* line 142, ../compass/sass/_footer.scss */
+/* line 143, ../compass/sass/_footer.scss */
 #footer_bottom .follow li a {
   display: inline-block;
   width: 24px;
   height: 28px;
   background: url(../img/follow.png) no-repeat;
 }
-/* line 149, ../compass/sass/_footer.scss */
+/* line 150, ../compass/sass/_footer.scss */
 #footer_bottom .follow li a.twitter {
   background-position: -24px 0;
 }
-/* line 150, ../compass/sass/_footer.scss */
+/* line 151, ../compass/sass/_footer.scss */
 #footer_bottom .follow li a.facebook {
   background-position: 0 0;
 }
-/* line 151, ../compass/sass/_footer.scss */
+/* line 152, ../compass/sass/_footer.scss */
 #footer_bottom .follow li a.rss {
   background-position: -72px 0;
 }
-/* line 153, ../compass/sass/_footer.scss */
+/* line 154, ../compass/sass/_footer.scss */
 #footer_bottom .follow li a:hover {
   background-position-y: -28px;
 }
