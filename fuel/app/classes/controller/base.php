@@ -15,7 +15,8 @@ class Controller_Base extends Controller_Template
 			$this->current_user = Model_User::find( 'first', array(
 				'where' => array(
 					array( 'username', 'like', Session::get( 'username' ) )
-				)
+				),
+				'related' => array( 'country' )
 			));
 		}
 		else

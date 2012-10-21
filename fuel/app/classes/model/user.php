@@ -32,4 +32,14 @@ class Model_User extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
+
+	protected static $_belongs_to = array(
+    'country' => array(
+        'key_from' => 'country_id',
+        'model_to' => 'Model_Country',
+        'key_to' => 'id',
+        'cascade_save' => true,
+        'cascade_delete' => false,
+    )
+);
 }

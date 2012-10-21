@@ -171,8 +171,6 @@ return array(
 		 * Wether to fallback to global when a value is not found in the input array.
 		 */
 		'global_input_fallback' => true,
-		'open_error'            => '<p class="form_error">',
-		'close_error'           => '</p>',
 	),
 
 	/**

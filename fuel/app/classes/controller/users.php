@@ -229,4 +229,126 @@ class Controller_Users extends Controller_Base
 		$this->template->content = View::forge('users/account');
 	}
 
+
+	public function action_edit()
+	{
+		// form validation
+		$val = Validation::forge();
+
+		$val->add( 'first_name', 'First Name' )
+			->add_rule( 'required' )
+			->add_rule( 'min_length', 2 )
+			->add_rule( 'max_length', 25 );
+		$val->add( 'last_name', 'Last Name' )
+			->add_rule( 'required' )
+			->add_rule( 'min_length', 2 )
+			->add_rule( 'max_length', 25 );
+		$val->add( 'email', 'Email Address' )
+			->add_rule( 'required' )
+			->add_rule( 'valid_email' );
+		$val->add( 'tel', 'Telephone' )
+			->add_rule( 'match_pattern', '/^([1]-)?[0-9]{3}-[0-9]{3}-[0-9]{4}$/i' );
+		$val->add( 'birth_day' )
+			->add_rule( 'required' )
+			->add_rule( 'numeric_min', 1 )
+			->add_rule( 'numeric_max', 31 );
+		$val->add( 'birth_month' )
+			->add_rule( 'required' )
+			->add_rule( 'numeric_min', 1 )
+			->add_rule( 'numeric_max', 12 );
+		$val->add( 'birth_year' )
+			->add_rule( 'required' )
+			->add_rule( 'numeric_min', date('Y')-100 )
+			->add_rule( 'numeric_max', date( 'Y')-12 );
+
+		$val->add( 'street', 'Street Name' )
+			->add_rule( 'required' )
+			->add_rule( 'min_length', 2 )
+			->add_rule( 'max_length', 50 );
+		$val->add( 'street_number', 'Street Number' )
+			->add_rule( 'numeric_min', 1 )
+			->add_rule( 'numeric_max', 999 );
+		$val->add( 'town', 'Town' )
+			->add_rule( 'required' )
+			->add_rule( 'min_length', 2 )
+			->add_rule( 'max_length', 50 );
+		$val->add( 'country', 'Country' )
+			->add_rule( 'required' )
+			->add_rule( 'numeric_min', 1 )
+			->add_rule( 'numeric_max', 300 );
+
+		$val->add( 'username', 'Username' )
+			->add_rule( 'required' )
+			->add_rule( 'min_length', 3 )
+			->add_rule( 'max_length', 15 );
+		$val->add( 'password', 'Password' )
+			->add_rule( 'min_length', 7 )
+			->add_rule( 'max_length', 100 );
+		$val->add( 'password_confirm', 'Password Again' )
+			->add_rule( 'match_field', 'password' );
+
+		// if eveything in the form is correct save the information
+		if( Input::method() == 'POST' && $val->run() )
+		{
+			$salt = 'j1V]hr$bvVL_{lj_~P^(ogTfm$Gie}QyyKZw$zWcWdaR';
+			
+			$regular_id = Model_Role::find('first', array(
+				'where' => array(
+					array( 'name', 'regular' )
+				),
+				'limit' => 1
+			))['id'];
+
+			// save the user's information
+			$user = Model_User::find( $this->current_user->id );
+			$user->first_name = $val->validated( 'first_name' );
+			$user->last_name = $val->validated( 'last_name' );
+			$user->email = $val->validated( 'email' );
+			$user->tel = $val->validated( 'tel' );
+			$user->date_of_birth = $val->validated( 'birth_day' ) . '-' . ($val->validated( 'birth_month' ) + 1) . '-' . $val->validated( 'birth_year' );
+			$user->street = $val->validated( 'street' );
+			$user->street_number = $val->validated( 'street_number' ) ? $val->validated( 'street_number' ) : null;
+			$user->town = $val->validated( 'town' );
+			$user->country_id = $val->validated( 'country' );
+			$user->username = $val->validated( 'username' );
+			if( $val->validated( 'password' ) != '' )
+				$user->password = Str::truncate( \Crypt::encode( $val->validated( 'password' ), $salt ), 64, '' );
+			$user->save();
+			
+			Session::set_flash( 'flash_message', 'Your account has been successfully updated' );
+			Response::redirect( Uri::create( 'users/account' ) );
+		}
+
+
+		// generate information for date of birth
+		for( $i = 1; $i <= 31; $i++ )
+		{
+			$birth_days[] = $i;
+		}
+		$months = 'January, February, March, April, May, June, July, August, September, October, November, December';
+		$birth_months = explode( ', ', $months);
+		for( $i = date('Y')-12; $i >= date('Y')-100; $i-- )
+		{
+			$birth_years[] = $i;
+		}
+
+		// fetch list of countries from the database
+		$countries = Model_Country::find('all', array( 'order_by' => array( 'name' => 'asc' ) ) );
+
+		// split stored date of birth
+		$dob = explode( '-', $this->current_user->date_of_birth );
+
+		$this->template->title = 'Users &raquo; Edit Account';
+		$this->template->content = View::forge( 'users/edit', array(
+			'birth_days'   => $birth_days,
+			'birth_months' => $birth_months,
+			'birth_years'  => $birth_years,
+			'countries'    => $countries,
+			'val'          => $val,
+			'current_birth_day' => $dob[0],
+			'current_birth_month' => $dob[1]-1,
+			'current_birth_year' => $dob[2],
+		));
+	}
+
 }

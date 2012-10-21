@@ -37,7 +37,7 @@ class Controller_Home extends Controller_Base
 		{
 			$email = Email::forge();
 			$email->from( $val->validated( 'email' ), $val->validated( 'name' ) );
-			$email->to( 'daniel.chris.lucas' );
+			$email->to( 'daniel.chris.lucas@gmail.com' );
 			$email->subject( 'LPCSD Ecommerce - Contact Form' );
 			$email->html_body( \View::forge( 'layouts/emails/contact', array(
 				'name' => $val->validated( 'name' ),

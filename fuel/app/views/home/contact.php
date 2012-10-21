@@ -87,16 +87,14 @@
 <div class="span9">
 	<div id="gmap">
 		<iframe width="476" height="269" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
-		src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=fr&amp;geocode=&amp;q=iut+de+vannes&amp;aq=&amp;
-		sll=49.439557,-162.333984&amp;sspn=44.035989,79.013672&amp;t=h&amp;ie=UTF8&amp;hq=iut&amp;hnear=Vannes,+Morbihan,+Bretagne,
-		+France&amp;ll=47.651195,-2.771173&amp;spn=0.007777,0.020385&amp;z=15&amp;output=embed"></iframe>
+		src="http://maps.google.co.uk/?ie=UTF8&amp;t=m&amp;ll=47.645528,-2.777052&amp;spn=0.007778,0.020385&amp;z=15&amp;
+		iwloc=lyrftr:m,8160289690635496367,47.644487,-2.777009&amp;output=embed"></iframe>
 		<br />
 		<small>
-		<a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=fr&amp;geocode=&amp;q=iut+de+vannes&amp;aq=&amp;
-		sll=49.439557,-162.333984&amp;sspn=44.035989,79.013672&amp;t=h&amp;ie=UTF8&amp;hq=iut&amp;hnear=Vannes,+Morbihan,+Bretagne,+France
-		&amp;ll=47.651195,-2.771173&amp;spn=0.007777,0.020385&amp;z=15" style="color:#0000FF;text-align:left">
-			Agrandir le plan
-		</a>
+			<a href="http://maps.google.co.uk/?ie=UTF8&amp;t=m&amp;ll=47.645528,-2.777052&amp;spn=0.007778,0.020385&amp;
+			z=15&amp;iwloc=lyrftr:m,8160289690635496367,47.644487,-2.777009&amp;source=embed" style="color:#0000FF;text-align:left">
+				View Larger Map
+			</a>
 		</small>
 	</div>
 </div>
@@ -112,17 +110,17 @@
 		<label for="name">Name<span>*</label>
 		<input type="text" name="name" id="name" placeholder="ex: John" value="<?php echo $val->validated( 'name' ) ?>">
 	</p>
-	<?php $val->error( 'name' ) ? '<p class="form_error">' . $val->error( 'name' ) . '</p>' : '' ?>
+	<?php echo $val->error( 'name' ) ? '<p class="form_error">' . $val->error( 'name' ) . '</p>' : '' ?>
 	<p>
 		<label for="email">Email<span>*</label>
 		<input type="text" name="email" id="email" placeholder="ex: Doe" value="<?php echo $val->validated( 'email' ) ?>">
 	</p>
-	<?php $val->error( 'email' ) ? '<p class="form_error">' . $val->error( 'email' ) . '</p>' : '' ?>
+	<?php echo $val->error( 'email' ) ? '<p class="form_error">' . $val->error( 'email' ) . '</p>' : '' ?>
 	<p>
 		<label for="message">Message<span>*</label>
 		<textarea name="message" id="message" placeholder="ex: Enter you message here"><?php echo $val->validated( 'message' ) ?></textarea>
 	</p>
-	<?php $val->error( 'message' ) ? '<p class="form_error">' . $val->error( 'message' ) . '</p>' : '' ?>
+	<?php echo $val->error( 'message' ) ? '<p class="form_error">' . $val->error( 'message' ) . '</p>' : '' ?>
 	<p>
 		<button class="btn btn-primary" type="submit">Submit</button>
 	</p>
