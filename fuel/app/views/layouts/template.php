@@ -66,9 +66,9 @@
                             <li><a href="<?php echo Uri::base() ?>" class="active">Home<span></span></a></li>
                             <li><a href="#">Categories</a></li>
                             <?php if( isset( $current_user ) ) : ?>
-                                <li><a href="#">My Account</a></li>
+                                <li><a href="<?php echo Uri::create( 'users/account' ) ?>">My Account</a></li>
                             <?php endif ?>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?php echo Uri::create( 'home/contact' ) ?>">Contact</a></li>
                         </ul>
                     </nav>
                     <div class="span2">
@@ -102,9 +102,9 @@
         <!-- start about + latest products -->
         <div class="row">
             <div class="container">
-                <?php if( Uri::segment(1) !== 'users' ) echo View::forge( 'layouts/sidebar' ) ?>
+                <?php if( Uri::segment(1) !== 'users' && Uri::segment(2) !== 'contact' ) echo View::forge( 'layouts/sidebar' ) ?>
                 
-                <div id="main" class="<?php echo ( Uri::segment(1) == 'users' ) ? 'span12' : 'span9' ?> about" role="main">
+                <div id="main" class="<?php echo ( ( Uri::segment(1) == 'users' ) || ( Uri::segment(2) == 'contact' ) ) ? 'span12' : 'span9' ?> about" role="main">
                     <?php echo $content ?>
                 </div>
             </div>
@@ -210,15 +210,10 @@
         <!-- end footer bottom -->
         
 
-        
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
 
-        <?php echo Asset::js( 'vendor/bootstrap.min.js' ) ?>
-
-        <?php echo Asset::js( 'plugins.js' ) ?>
-        <?php echo Asset::js( 'main.js' ) ?>
+        <?php echo Asset::js( array( 'vendor/bootstrap.min.js', 'gmaps.js', 'plugins.js', 'main.js' ) ) ?>
 
         <!-- <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

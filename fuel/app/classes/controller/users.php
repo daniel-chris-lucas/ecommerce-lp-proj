@@ -222,4 +222,11 @@ class Controller_Users extends Controller_Base
 		Response::redirect( Uri::base() );
 	}
 
+
+	public function action_account()
+	{
+		$this->template->title = 'Users &raquo; Account';
+		$this->template->content = View::forge('users/account');
+	}
+
 }
