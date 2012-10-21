@@ -1,9 +1,7 @@
 <?php
 
-class Controller_Home extends Controller_Template
+class Controller_Home extends Controller_Base
 {
-
-	public $template = 'layouts/template';
 
 	public function action_index()
 	{

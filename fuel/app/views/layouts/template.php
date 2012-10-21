@@ -25,6 +25,7 @@
         <![endif]-->
 
         <!-- start main header -->
+        <?php echo Session::get_flash( 'flash_message' ) ?>
         <header>
             <div class="container">
                 <!-- start top row of header -->
@@ -44,7 +45,11 @@
                                 <input id="word_search" placeholder="Type keyword and hit enter">
                             </form>
                         </div>
-                        <a href="<?php echo Uri::create( 'users/connect' ) ?>" class="login_register">Login <span>-- or --</span> Register</a>
+                        <?php if( !isset( $current_user ) ) : ?>
+                            <a href="<?php echo Uri::create( 'users/connect' ) ?>" class="login_register">Login <span>-- or --</span> Register</a>
+                        <?php else : ?>
+                            <a href="<?php echo Uri::create( 'users/logout' ) ?>" class="login_register">Logout</a>
+                        <?php endif ?>
                         <select id="currency">
                             <option value="euros">Euros</option>
                             <option value="GB Pounds">GB Pounds</option>
@@ -60,7 +65,9 @@
                         <ul>
                             <li><a href="<?php echo Uri::base() ?>" class="active">Home<span></span></a></li>
                             <li><a href="#">Categories</a></li>
-                            <li><a href="#">My Account</a></li>
+                            <?php if( isset( $current_user ) ) : ?>
+                                <li><a href="#">My Account</a></li>
+                            <?php endif ?>
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </nav>

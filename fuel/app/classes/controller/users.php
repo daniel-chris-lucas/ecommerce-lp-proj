@@ -1,18 +1,51 @@
 <?php
 
-class Controller_Users extends Controller_Template
+class Controller_Users extends Controller_Base
 {
-
-	public $template = 'layouts/template';
-
 
 	/**
 	 * Allow a guest visitor to connect to the site using a username and a password
 	 */
 	public function action_connect()
 	{
+		// form validation
+		$val = Validation::forge();
+
+		$val->add( 'username', 'Username' )
+			->add_rule( 'required' )
+			->add_rule( 'min_length', 3 )
+			->add_rule( 'max_length', 15 );
+		$val->add( 'password', 'Password' )
+			->add_rule( 'required' )
+			->add_rule( 'min_length', 7 )
+			->add_rule( 'max_length', 100 );
+
+		if( Input::method() == 'POST' && $val->run() )
+		{
+			$salt = 'j1V]hr$bvVL_{lj_~P^(ogTfm$Gie}QyyKZw$zWcWdaR';
+			$hash = Str::truncate( \Crypt::encode( $val->validated( 'password' ), $salt ), 64, '' );
+
+			$user = Model_User::find( 'first', array(
+				'where' => array(
+					array( 'username', $val->validated( 'username' ) ),
+					array( 'password', $hash )
+				)
+			));
+
+			if( isset( $user ) && $user['activated'] == 1 )
+			{
+				Session::set( 'username', $user->username );
+				Session::set_flash( 'flash_message', "Welcome back {$user->first_name} {$user->last_name}, you have successfully logged in" );
+			}
+			else
+			{
+				Session::set_flash( 'flash_message', 'Login failed. Please try again.' );
+			}
+			Response::redirect( Uri::base() );
+		}
+
 		$this->template->title = 'Users &raquo; Connect';
-		$this->template->content = View::forge('users/connect');
+		$this->template->content = View::forge('users/connect', array( 'val' => $val ) );
 	}
 
 
@@ -176,6 +209,16 @@ class Controller_Users extends Controller_Template
 			Session::set_flash( 'flash_message', 'This confirmation code has expired.' );
 		}
 		
+		Response::redirect( Uri::base() );
+	}
+
+
+	public function action_logout()
+	{
+		if( Session::get( 'username' ) )
+			Session::destroy();
+		
+		Session::set_flash( 'flash_message', 'You have been logged out' );
 		Response::redirect( Uri::base() );
 	}
 

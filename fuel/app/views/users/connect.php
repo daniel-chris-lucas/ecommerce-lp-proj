@@ -7,10 +7,12 @@
 	<p>
 		<label for="username">Username :</label>
 		<input type="text" name="username" id="username" placeholder="Username">
+		<?php echo $val->error( 'username' ) ? '<p class="form_error">' . $val->error( 'username' ) . '</p>' : '' ?>
 	</p>
 	<p>
 		<label for="password">Password :</label>
-		<input type="text" name="password" id="password" placeholder="Password">
+		<input type="password" name="password" id="password" placeholder="Password">
+		<?php echo $val->error( 'password' ) ? '<p class="form_error">' . $val->error( 'password' ) . '</p>' : '' ?>
 	</p>
 	<p>
 		<button type="submit" class="btn btn-primary">Sign In</button>
