@@ -1,6 +1,6 @@
 *.sublime-project
 *.sublime-workspace
 Thumbs.db
-config.php
+config
 compass
 logs
