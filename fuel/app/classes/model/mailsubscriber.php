@@ -6,4 +6,5 @@ class Model_Mailsubscriber extends \Orm\Model
 		'id',
 		'user_id'
 	);
+
 }

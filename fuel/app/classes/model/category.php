@@ -7,5 +7,4 @@ class Model_Category extends \Orm\Model
 		'name',
 		'parent_id'
 	);
-
 }

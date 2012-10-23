@@ -9,7 +9,7 @@ class Create_options
 		\DBUtil::create_table('options', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
 			'name' => array('constraint' => 45, 'type' => 'varchar'),
-			'value' => array('constraint' => 2, 'type' => 'int'),
+			'value' => array('constraint' => 11, 'type' => 'int'),
 
 		), array('id'));
 	}

@@ -8,4 +8,5 @@ class Model_Country extends \Orm\Model
 		'iso',
 		'iso3'
 	);
+
 }

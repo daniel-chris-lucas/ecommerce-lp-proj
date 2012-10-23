@@ -16,7 +16,6 @@ class Model_User extends \Orm\Model
 		'tel',
 		'email',
 		'role_id',
-		'order_id',
 		'confirmation_code',
 		'activated',
 		'created_at',

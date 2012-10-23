@@ -8,5 +8,4 @@ class Model_Characteristic extends \Orm\Model
 		'value',
 		'product_id'
 	);
-
 }

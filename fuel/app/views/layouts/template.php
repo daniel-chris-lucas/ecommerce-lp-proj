@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
         <?php echo Asset::css( 'style.css' ) ?>
 
         <?php echo Asset::js( 'vendor/modernizr-2.6.1-respond-1.1.0.min.js' ) ?>
@@ -405,7 +405,7 @@
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </nav>
-                    <p class="copyright" style="margin-bottom: 0;">&copy; All rights reserved by <a href="http://daniel-lucas.com" target="_blank">Daniel Lucas</a> &amp; <span style="color: #08c;">Severine Stempin</span></p>
+                    <p class="copyright" style="margin-bottom: 0;">&copy; <?php echo date('Y') ?> All rights reserved by <a href="http://daniel-lucas.com" target="_blank">Daniel Lucas</a> &amp; <span style="color: #08c;">Severine Stempin</span></p>
                     <p class="accepted_payments" style="margin-bottom: 0;">
                         The accepted payment methods on this site are Visa, Paypal, Mastercard, American Express
                     </p>

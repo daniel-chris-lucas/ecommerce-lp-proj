@@ -8,7 +8,6 @@ class Model_Product extends \Orm\Model
 		'description',
 		'category_id',
 		'price',
-		'rating',
 		'created_at',
 		'updated_at'
 	);

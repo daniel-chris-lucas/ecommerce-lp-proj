@@ -7,4 +7,5 @@ class Model_Option extends \Orm\Model
 		'name',
 		'value'
 	);
+
 }
