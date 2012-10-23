@@ -23,7 +23,7 @@ return array(
 	 *
 	 * Set this to null to have it automatically detected.
 	 */
-	'base_url'  => 'http://proj-ecommerce.loc/',
+	'base_url'  => 'http://127.0.0.1:8080/Projet_Web/',
 
 	/**
 	 * url_suffix - Any suffix that needs to be added to
