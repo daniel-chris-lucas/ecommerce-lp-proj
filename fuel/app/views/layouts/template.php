@@ -69,6 +69,9 @@
                                 <li><a href="<?php echo Uri::create( 'users/account' ) ?>">My Account</a></li>
                             <?php endif ?>
                             <li><a href="<?php echo Uri::create( 'home/contact' ) ?>">Contact</a></li>
+                            <?php if( isset( $current_user ) && ( $current_user->role_id === $moderator_id || $current_user->role_id === $admin_id ) ) : ?>
+                                <li><a href="<?php echo Uri::create( 'admin/dashboard' ) ?>">Admin Panel</a></li>
+                            <?php endif ?>
                         </ul>
                     </nav>
                     <div class="span2">

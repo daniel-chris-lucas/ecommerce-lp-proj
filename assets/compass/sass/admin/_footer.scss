@@ -1,0 +1,35 @@
+footer {
+	background: url(#{$admin_img}/footer-bg.png) repeat-x #1a1d20;
+
+	.container {
+		padding: 20px 0 40px;
+	}
+
+	ul {
+		margin-left: 0;
+	}
+
+	li {
+		float: left;
+		margin-right: 20px;
+
+		a {
+			color: #e4e3bf;
+
+			&:hover {
+				color: white;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.footer_right {
+		color: #8d8a79;
+		text-align: right;
+
+		span {
+			display: block;
+			color: white;
+		}
+	}
+}

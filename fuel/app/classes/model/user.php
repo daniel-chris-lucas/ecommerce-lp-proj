@@ -2,6 +2,7 @@
 
 class Model_User extends \Orm\Model
 {
+
 	protected static $_properties = array(
 		'id',
 		'username',
@@ -22,6 +23,7 @@ class Model_User extends \Orm\Model
 		'updated_at'
 	);
 
+
 	protected static $_observers = array(
 		'Orm\Observer_CreatedAt' => array(
 			'events' => array('before_insert'),
@@ -33,13 +35,35 @@ class Model_User extends \Orm\Model
 		),
 	);
 
+
 	protected static $_belongs_to = array(
-    'country' => array(
-        'key_from' => 'country_id',
-        'model_to' => 'Model_Country',
-        'key_to' => 'id',
-        'cascade_save' => true,
-        'cascade_delete' => false,
-    )
-);
+	    'country' => array(
+	        'key_from' => 'country_id',
+	        'model_to' => 'Model_Country',
+	        'key_to' => 'id',
+	        'cascade_save' => true,
+	        'cascade_delete' => false,
+	    ),
+	    'role' => array(
+			'key_from' => 'role_id',
+			'model_to' => 'Model_Role',
+			'key_to' => 'id',
+			'cascade_save' => true,
+			'cascade_delete' => false,
+		)
+	);
+
+
+	public static function age_from_dob( $date_of_birth )
+	{
+		return floor( ( time() - strtotime( $date_of_birth ) ) / 31556925 );
+	}
+
+
+	public static function count_users()
+	{
+		$result = DB::select( DB::expr( 'COUNT(*) as count' ) )->from( 'users' )->execute()->current();
+		return $result['count'];
+	}
+
 }

@@ -9,7 +9,7 @@ class Create_categories
 		\DBUtil::create_table('categories', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
 			'name' => array('constraint' => 25, 'type' => 'varchar'),
-			'parent_id' => array('constraint' => 11, 'type' => 'int'),
+			'parent_id' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
 		), array('id'), true, false, null, array(
 			array(

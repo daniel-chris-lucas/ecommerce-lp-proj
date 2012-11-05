@@ -1,0 +1,38 @@
+body {
+	font-size: 13px;
+	font-family: "Lucida Sans Unicode", "Trebuchet MS", helvetica, arial, sans-serif;
+	background: url(#{$admin_img}/body-bg.png) repeat-x #1d1d1d;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+.white_link {
+	color: white;
+
+	&:hover {
+		color: white;
+	}
+}
+
+#main {
+	background: url(#{$admin_img}/main-bg.png) repeat-x white;
+	padding-bottom: 20px;
+}
+
+table {
+	.table-icons {
+		@extend .hide-text;
+		display: inline;
+		background-image: url(#{$admin_img}/view-edit-delete.png);
+		padding: 13px;
+		margin-right: 8px;
+
+		&.view { background-position: -26px 0; }
+
+		&.edit { background-position: -52px 0; }
+
+		&.delete { background-position: 0 0; }
+	}
+}

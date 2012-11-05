@@ -1,0 +1,59 @@
+#main_menu {
+	position: relative;
+
+	ul.span10 li {
+		float: left;
+		background: url(#{$admin_img}/tab-left.png) no-repeat top left;
+		padding-left: 15px;
+		height: 34px;
+
+		.tab-right-side {
+			display: block;
+			padding: 7px 15px 9px 0;
+		}
+
+		a {
+			@extend .tab-right-side;
+			text-decoration: none;
+			background: url(#{$admin_img}/tab-right.png) no-repeat top right;
+		}
+
+		&.selected, &:hover {
+			background-image: url(#{$admin_img}/active-left.png);
+			position: relative;
+
+			a, span {
+				@extend .tab-right-side;
+				background: url(#{$admin_img}/active-right.png) no-repeat top right;
+				color: #22597c;
+			}
+		}
+	}
+
+	.span2 {
+		a {
+			display: block;
+			width: 86px;
+			height: 25px;
+			background: url(#{$admin_img}/view-site.png) no-repeat;
+			float: right;
+			color: #33301f;
+			text-decoration: none;
+			text-indent: 25px;
+			line-height: 23px;
+		}
+	}
+
+	.submenu {
+		padding-left: 20px;
+		margin-bottom: 0;
+
+		li {
+			a {
+				color: #999;
+
+				&:hover { color: #666; text-decoration: underline; }
+			}
+		}
+	}
+}

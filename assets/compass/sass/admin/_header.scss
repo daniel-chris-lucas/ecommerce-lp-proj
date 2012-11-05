@@ -1,0 +1,49 @@
+header {
+	font-size: 12px;
+	min-height: 198px;
+
+	.container {
+		padding-top: 23px;
+		background: url(#{$admin_img}/header-bg.png) no-repeat;
+	}
+
+	.span9 {
+		margin-bottom: 38px;
+
+		p {
+			margin: 8px 0;
+			float: right;
+			color: #ccc;
+		}
+	}
+
+	a {
+		color: #e2e2e2;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+			color: #e2e2e2;
+		}
+	}
+}
+
+h1 {
+	margin-top: 13px;
+	margin-left: 3px;
+
+	a {
+		display: block;
+		width: 264px;
+		height: 31px;
+		@extend .hide-text;
+		background: url(#{$admin_img}/logo.png) no-repeat;
+	}
+}
+
+#login_info {
+	font-size: 10px;
+	margin-top: 0;
+
+	span { color: white; }
+}
