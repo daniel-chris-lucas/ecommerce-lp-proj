@@ -25,6 +25,9 @@
         <![endif]-->
 
         <!-- start main header -->
+
+        <?php echo Session::get_flash( 'flash_message' ) ?>
+
         <header>
             <div class="container">
                 <!-- start top row of header -->

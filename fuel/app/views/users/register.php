@@ -2,6 +2,7 @@
     <h2 class="title">Register Account</h2>
 </div>
 
+
 <?php echo Form::open() ?>
 
 	<div class="span6" style="margin-left: 0">
@@ -16,12 +17,21 @@
 		<label style="display: block">Date of birth</label>
 		<select name="birth_day" id="birth_day" style="width: 105px">
 			<option>--- Day ---</option>
+			<?php foreach ($birth_days as $birth_day): ?>
+				<option value="<?php echo $birth_day ?>"> <?php echo $birth_day ?> </option>
+			<?php endforeach; ?>
 		</select>
 		<select name="birth_month" id="birth_month" style="width: 125px">
 			<option>--- Month ---</option>
+			<?php foreach ($birth_months as $birth_month): ?>
+				<option value=" <?php echo $birth_month ?> "> <?php echo $birth_month ?> </option>
+			<?php endforeach; ?>
 		</select>
 		<select name="birth_year" id="birth_year" style="width: 115px">
 			<option>--- Year ---</option>
+			<?php foreach ($birth_years as $birth_year): ?>
+				<option value=" <?php echo $birth_year ?> "> <?php echo $birth_year ?> </option>
+			<?php endforeach; ?>
 		</select>
 
 	</div>
@@ -35,6 +45,9 @@
 		<input type="text" name="town" id="town" placeholder="Town">
 		<select name="country" id="country">
 			<option>--- Country ---</option>
+			<?php foreach ($countries as $country): ?>
+				<option value=" <?php echo $country['id'] ?> "> <?php echo $country['name'] ?> </option>
+			<?php endforeach; ?>
 		</select>
 
 	</div>
@@ -49,6 +62,10 @@
 		<input type="text" name="username" id="username" placeholder="Username">
 		<input type="password" name="password" id="password" placeholder="Password">
 		<input type="password" name="password_confirm" id="password_confirm" placeholder="Password Again">
+
+		<p>
+			<button type="submit" class="btn btn-primary"> Register </button>
+		</p>
 
 	</div>
 
