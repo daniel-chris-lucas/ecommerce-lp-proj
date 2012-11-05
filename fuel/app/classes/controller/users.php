@@ -36,12 +36,13 @@ class Controller_Users extends Controller_Base
 			{
 				Session::set( 'username', $user->username );
 				Session::set_flash( 'flash_message', "Welcome back {$user->first_name} {$user->last_name}, you have successfully logged in" );
+				Response::redirect( Uri::base() );
 			}
 			else
 			{
 				Session::set_flash( 'flash_message', 'Login failed. Please try again.' );
+				Response::redirect( 'users/connect' );
 			}
-			Response::redirect( Uri::base() );
 		}
 
 		$this->template->title = 'Users &raquo; Connect';
@@ -140,10 +141,10 @@ class Controller_Users extends Controller_Base
 			// send the activation email
 			$email = Email::forge();
 			$email->from( 'daniel.chris.lucas@gmail.com', 'LPCSD Ecommerce' );
-			$email->to( $val->validated( 'email' ), $user->first_name . ' ' . $user->last_name );
+			$email->to( $user->email, $user->first_name . ' ' . $user->last_name );
 			$email->subject( 'LPCSD Ecommerce - Activate Your Account' );
-			$email->html_body( \View::forge( 'layouts/emails/activation', array(
-				'act_link' => Uri::base() . 'users/activate/' . $val->validated( 'username' ) . '/' . $user->confirmation_code,
+			$email->html_body( View::forge( 'layouts/emails/activation', array(
+				'act_link' => Uri::base() . 'users/activate/' . $user->username . '/' . $user->confirmation_code,
 				'first_name' => ucfirst( $user->first_name ),
 				'last_name' => strtoupper( $user->last_name ),
 			)));
