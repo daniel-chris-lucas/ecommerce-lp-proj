@@ -116,8 +116,7 @@ class Controller_Users extends Controller_Base
 			$regular_id = Model_Role::find('first', array(
 				'where' => array(
 					array( 'name', 'regular' )
-				),
-				'limit' => 1
+				)
 			))['id'];
 
 			// save the user's information
