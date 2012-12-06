@@ -200,6 +200,16 @@ class Controller_Products extends Controller_Base
 		if( empty( $this->current_user ) ) Response::redirect( Uri::base() );
 
 		$sub_total = 0;
+		foreach( Session::get( 'cart_products' ) as $prod )
+		{
+			$sub_total += ( $prod['price'] * $prod['quantity'] );
+		}
+
+		$order = Model_Order::forge();
+		$order->user_id = $this->current_user->id;
+		$order->total = $sub_total;
+		$order->save();
+
 		$products = null;
 		if( Session::get( 'cart_products' ) )
 		{
@@ -225,15 +235,8 @@ class Controller_Products extends Controller_Base
 				$order_product->quantity = $product['quantity'];
 				$order_product->order_id = $order->id;
 				$order_product->save();
-
-				$sub_total += $prod->price;
 			}
 		}
-
-		$order = Model_Order::forge();
-		$order->user_id = $this->current_user->id;
-		$order->total = $sub_total;
-		$order->save();
 
 		// send invoice email
 		$email = Email::forge();

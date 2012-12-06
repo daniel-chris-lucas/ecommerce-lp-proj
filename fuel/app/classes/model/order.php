@@ -24,4 +24,6 @@ class Model_Order extends \Orm\Model
 
 	protected static $_has_many = array( 'orderproducts' );
 
+	protected static $_belongs_to = array( 'user' );
+
 }

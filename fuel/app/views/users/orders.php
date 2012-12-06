@@ -23,6 +23,7 @@
 			<th>Name</th>
 			<th>Item No.</th>
 			<th>Unit Price</th>
+			<th>Quantity</th>
 			<th>Total</th>
 		</tr>
 	</thead>
@@ -32,6 +33,7 @@
 				<td><?= $product->name ?></td>
 				<td><?= $product->id ?></td>
 				<td><?= number_format( (float)$product->price, 2, '.', '' ) ?></td>
+				<td><?= $product->quantity ?></td>
 				<td><?= number_format( (float)($product->price * $product->quantity), 2, '.', '' ) ?></td>
 			</tr>
 		<?php endforeach; ?>
