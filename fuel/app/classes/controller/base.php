@@ -13,12 +13,16 @@ class Controller_Base extends Controller_Template
 			'where' => array(
 				array( 'name', 'like', 'moderator' )
 			)
-		))['id'];
+		));
+		$this->moderator_id = $this->moderator_id['id'];
 		$this->admin_id = Model_Role::find( 'first', array(
 			'where' => array(
 				array( 'name', 'like', 'administrator' )
 			)
-		))['id'];
+		));
+		$this->admin_id = $this->admin_id['id'];
+
+		$this->main_categories = Model_Category::generate_categories_subcategories();
 		
 		// get user information
 		if( Session::get( 'username' ) )
@@ -26,8 +30,7 @@ class Controller_Base extends Controller_Template
 			$this->current_user = Model_User::find( 'first', array(
 				'where' => array(
 					array( 'username', 'like', Session::get( 'username' ) )
-				),
-				'related' => array( 'country' )
+				)
 			));
 		}
 		else
@@ -35,9 +38,23 @@ class Controller_Base extends Controller_Template
 			$this->current_user = null;
 		}
 
+		if( Uri::segment( 1 ) != 'products' || Uri::segment( 2 ) != 'view' )
+		{
+			$cart_total = 0;
+			if( Session::get( 'cart_products' ) )
+			{
+				foreach( Session::get( 'cart_products' ) as $cart_product )
+				{
+					$cart_total += ( $cart_product['price'] * $cart_product['quantity'] );
+				}
+			}
+			View::set_global( 'cart_total', $cart_total );
+		}
+
 		View::set_global( 'current_user', $this->current_user );
 		View::set_global( 'moderator_id', $this->moderator_id );
-		View::set_global( 'admin_id', $this->admin_id );	
+		View::set_global( 'admin_id', $this->admin_id );
+		View::set_global( 'main_categories', $this->main_categories );
 	}
 
 }

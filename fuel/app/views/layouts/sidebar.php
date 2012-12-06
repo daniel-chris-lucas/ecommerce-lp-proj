@@ -3,13 +3,31 @@
         <h2 class="title">Categories</h2>
     </div>
     
+    <?php $newCategories = array() ?>
     <ul id="category_box">
-        <li><a href="#">Women's Accessories</a></li>
-        <li><a href="#">Men's Shoes</a></li>
-        <li><a href="#">Gift Specials</a></li>
-        <li><a href="#">Electronics</a></li>
-        <li><a href="#">On Sale</a></li>
-        <li><a href="#">Summer Specials</a></li>
-        <li><a href="#">Unique Stuff</a></li>
+        <?php
+        	foreach( $main_categories as $main_category )
+        	{
+	        	$newCategories[ $main_category['parent_name']][] = array( 
+					'child_name' => $main_category['child1_name'],
+					'child_slug' => $main_category['child1_slug'], 
+					'parent_slug' => $main_category['parent_slug'] 
+				);
+        	}
+        ?>
+        
+        <?php foreach( $newCategories as $name => $subCat ) : ?>
+    	    <?php if( !empty( $subCat[0]['child_name'] ) ) : ?>
+    			<li><a href="<?= Uri::create( 'categories/view/' . $subCat[0]['parent_slug'] ) ?>"><?= $name ?></a>
+    	    		<ul>
+    	    			<?php foreach( $subCat as $cat ) : ?>
+    	    				<li><a href="<?= Uri::create( 'categories/view/' . $cat['child_slug'] ) ?>"><?= $cat['child_name'] ?></a></li>
+    	    			<?php endforeach; ?>
+    	    		</ul>
+    	    	</li>
+    		<?php else : ?>
+    			<li><a href="<?= Uri::create( 'categories/view/' . $subCat[0]['parent_slug'] ) ?>"><?= $name ?></a></li>
+    		<?php endif; ?>
+        <?php endforeach; ?>
     </ul>
 </aside>

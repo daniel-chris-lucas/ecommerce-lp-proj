@@ -6,7 +6,7 @@ class Controller_Home extends Controller_Base
 	public function action_index()
 	{
 		$this->template->title = 'Home &raquo; Index';
-		$this->template->content = View::forge('home/index');
+		$this->template->content = View::forge( 'home/index' );
 	}
 
 	
@@ -39,7 +39,7 @@ class Controller_Home extends Controller_Base
 			$email->from( $val->validated( 'email' ), $val->validated( 'name' ) );
 			$email->to( 'daniel.chris.lucas@gmail.com' );
 			$email->subject( 'LPCSD Ecommerce - Contact Form' );
-			$email->html_body( \View::forge( 'layouts/emails/contact', array(
+			$email->html_body( View::forge( 'layouts/emails/contact', array(
 				'name' => $val->validated( 'name' ),
 				'email' => $val->validated( 'email' ),
 				'message' => $val->validated( 'message' )
@@ -51,7 +51,7 @@ class Controller_Home extends Controller_Base
 			}
 			catch( \EmailSendingFailedException $e )
 			{
-				Session::set_flash( 'flash_message', 'Your email could not be sent. Please try again later.' );
+				Session::set_flash( 'flash_message_error', 'Your email could not be sent. Please try again later.' );
 			}
 			Response::redirect( Uri::current() );
 		}

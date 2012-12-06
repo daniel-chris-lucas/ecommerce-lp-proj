@@ -21,3 +21,16 @@
 	Username: <b><?php echo $current_user->username ?></b><br>
 	<a href="<?php echo Uri::create( 'users/edit' ) ?>" class="btn">Edit Account</a>
 </p>
+
+
+<div class="title_bg">
+	<h3 class="title">My Orders</h3>
+</div>
+
+<p>
+	<ul>
+		<?php foreach( $orders as $order ) : ?>
+			<li><a href="<?= Uri::create( 'users/orders/' . $order->id ) ?>">Order #<?= $order->id ?> - <?= date( 'd/m/Y', $order->created_at ) ?> - &euro; <?= number_format( (float)$order->total, 2, '.', '' ) ?></a></li>
+		<?php endforeach; ?>
+	</ul>
+</p>

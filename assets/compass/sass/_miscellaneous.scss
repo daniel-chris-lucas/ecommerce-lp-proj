@@ -51,12 +51,18 @@ body {
 	list-style: none;
 
 	li {
-		height: 38px;
 		border-bottom: 1px dashed #c2cbd2;
 		padding-bottom: 2px;
+		line-height: 35px;
 		background: url(../img/list-arrow.png) no-repeat;
 		text-indent: 20px;
-		line-height: 35px;
+
+		ul {
+			list-style: none;
+			margin-left: 0;
+
+			li { padding-left: 40px; background-position: 40px 0; }
+		}
 
 		a {
 			color: #495258;
@@ -73,4 +79,32 @@ body {
 
 #main, .sidebar {
 	float: right;
+}
+
+.form_error {
+	color: #b94a48;
+}
+
+// messages
+.flash_message {
+	border: 1px solid;
+	padding: 15px 10px 15px 70px;
+	background-repeat: no-repeat;
+	position: absolute;
+	left: 50%;
+	width: 500px;
+	margin-left: -292px;
+	text-align: center;
+	@include border-radius( 5px );
+
+
+	&.message_confirm {
+		color: #4f8a10;
+		background: url(../img/message-confirm.png) #dff2bf no-repeat 20px center;
+	}
+
+	&.message_error {
+		color: #d8000c;
+		background: url(../img/message-error.png) #ffbaba no-repeat 20px center;
+	}
 }

@@ -41,12 +41,7 @@
 
 	#gmap small { display: none; }
 
-	label {
-		display: block;
-		color: #666e73;
-		font-size: 13px;
-		margin-bottom: 5px;
-	}
+	.controls { float: none; margin-top: 5px; }
 
 	label span {
 		color: #e75b5b;
@@ -106,21 +101,27 @@
 </div>
 
 <?php echo Form::open() ?>
-	<p>
-		<label for="name">Name<span>*</label>
-		<input type="text" name="name" id="name" placeholder="ex: John" value="<?php echo $val->validated( 'name' ) ?>">
-	</p>
-	<?php echo $val->error( 'name' ) ? '<p class="form_error">' . $val->error( 'name' ) . '</p>' : '' ?>
-	<p>
-		<label for="email">Email<span>*</label>
-		<input type="text" name="email" id="email" placeholder="ex: Doe" value="<?php echo $val->validated( 'email' ) ?>">
-	</p>
-	<?php echo $val->error( 'email' ) ? '<p class="form_error">' . $val->error( 'email' ) . '</p>' : '' ?>
-	<p>
-		<label for="message">Message<span>*</label>
-		<textarea name="message" id="message" placeholder="ex: Enter you message here"><?php echo $val->validated( 'message' ) ?></textarea>
-	</p>
-	<?php echo $val->error( 'message' ) ? '<p class="form_error">' . $val->error( 'message' ) . '</p>' : '' ?>
+	<div class="control-group <?php if( $val->error( 'name' ) ) echo 'error' ?>">
+		<label class="control-label" for="name">Name<span>*</label>
+		<div class="controls">
+			<input type="text" name="name" id="name" placeholder="ex: John" value="<?php echo $val->validated( 'name' ) ?>">
+			<?php echo $val->error( 'name' ) ? "<span class='help-block'>{$val->error( 'name' )}</span>" : '' ?>
+		</div>
+	</div>
+	<div class="control-group <?php if( $val->error( 'email' ) ) echo 'error' ?>">
+		<label class="control-label" for="email">Email<span>*</label>
+		<div class="controls">
+			<input type="text" name="email" id="email" placeholder="ex: john.doe@email.com" value="<?php echo $val->validated( 'email' ) ?>">
+			<?php echo $val->error( 'email' ) ? "<span class='help-block'>{$val->error( 'email' )}</span>" : '' ?>
+		</div>
+	</div>
+	<div class="control-group <?php if( $val->error( 'message' ) ) echo 'error' ?>">
+		<label class="control-label" for="message">Message<span>*</label>
+		<div class="controls">
+			<textarea name="message" id="message" placeholder="ex: Enter you message here"><?php echo $val->validated( 'message' ) ?></textarea>
+			<?php echo $val->error( 'message' ) ? "<span class='help-block'>{$val->error( 'message' )}</span>" : '' ?>
+		</div>
+	</div>
 	<p>
 		<button class="btn btn-primary" type="submit">Submit</button>
 	</p>

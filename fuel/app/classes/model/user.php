@@ -36,22 +36,7 @@ class Model_User extends \Orm\Model
 	);
 
 
-	protected static $_belongs_to = array(
-	    'country' => array(
-	        'key_from' => 'country_id',
-	        'model_to' => 'Model_Country',
-	        'key_to' => 'id',
-	        'cascade_save' => true,
-	        'cascade_delete' => false,
-	    ),
-	    'role' => array(
-			'key_from' => 'role_id',
-			'model_to' => 'Model_Role',
-			'key_to' => 'id',
-			'cascade_save' => true,
-			'cascade_delete' => false,
-		)
-	);
+	protected static $_belongs_to = array( 'country', 'role' );
 
 
 	public static function age_from_dob( $date_of_birth )

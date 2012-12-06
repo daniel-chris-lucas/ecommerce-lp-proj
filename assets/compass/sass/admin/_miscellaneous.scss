@@ -36,3 +36,45 @@ table {
 		&.delete { background-position: 0 0; }
 	}
 }
+
+.form-inline label { margin-right: 15px; }
+
+.delete_icon {
+	background: url(#{$admin_img}/delete.png) no-repeat 0 0;
+	display: inline-block;
+	height: 14px;
+	text-indent: 18px;
+	line-height: 12px;
+	margin-left: 10px;
+
+	color: #222;
+	text-decoration: none;
+
+	&:hover {
+		color: #222;
+	}
+}
+
+// messages
+.flash_message {
+	border: 1px solid;
+	padding: 15px 10px 15px 70px;
+	background-repeat: no-repeat;
+	position: absolute;
+	left: 50%;
+	width: 500px;
+	margin-left: -292px;
+	text-align: center;
+	@include border-radius( 5px );
+
+
+	&.message_confirm {
+		color: #4f8a10;
+		background: url(#{$img_dir}/message-confirm.png) #dff2bf no-repeat 20px center;
+	}
+
+	&.message_error {
+		color: #d8000c;
+		background: url(#{$img_dir}/message-error.png) #ffbaba no-repeat 20px center;
+	}
+}

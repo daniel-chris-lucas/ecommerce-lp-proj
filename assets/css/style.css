@@ -8269,14 +8269,29 @@ body {
 }
 /* line 53, ../compass/sass/_miscellaneous.scss */
 #category_box li {
-  height: 38px;
+  /* height: 38px;
   border-bottom: 1px dashed #c2cbd2;
   padding-bottom: 2px;
   background: url(../img/list-arrow.png) no-repeat;
   text-indent: 20px;
+  line-height: 35px; */
+  border-bottom: 1px dashed #c2cbd2;
+  padding-bottom: 2px;
   line-height: 35px;
+  background: url(../img/list-arrow.png) no-repeat;
+  text-indent: 20px;
 }
-/* line 61, ../compass/sass/_miscellaneous.scss */
+/* line 67, ../compass/sass/_miscellaneous.scss */
+#category_box li ul {
+  list-style: none;
+  margin-left: 0;
+}
+/* line 71, ../compass/sass/_miscellaneous.scss */
+#category_box li ul li {
+  padding-left: 40px;
+  background-position: 40px 0;
+}
+/* line 74, ../compass/sass/_miscellaneous.scss */
 #category_box li a {
   color: #495258;
   -webkit-transition-duration: 0.6s;
@@ -8284,19 +8299,51 @@ body {
   -o-transition-duration: 0.6s;
   transition-duration: 0.6s;
 }
-/* line 65, ../compass/sass/_miscellaneous.scss */
+/* line 78, ../compass/sass/_miscellaneous.scss */
 #category_box li a:hover {
   color: #39b3ca;
   text-decoration: none;
 }
-/* line 68, ../compass/sass/_miscellaneous.scss */
+/* line 81, ../compass/sass/_miscellaneous.scss */
 #category_box li:last-child {
   border-bottom: none;
 }
 
-/* line 74, ../compass/sass/_miscellaneous.scss */
+/* line 87, ../compass/sass/_miscellaneous.scss */
 #main, .sidebar {
   float: right;
+}
+
+/* line 91, ../compass/sass/_miscellaneous.scss */
+.form_error {
+  color: #b94a48;
+}
+
+/* line 96, ../compass/sass/_miscellaneous.scss */
+.flash_message {
+  border: 1px solid;
+  padding: 15px 10px 15px 70px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 50%;
+  width: 500px;
+  margin-left: -292px;
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 108, ../compass/sass/_miscellaneous.scss */
+.flash_message.message_confirm {
+  color: #4f8a10;
+  background: url(../img/message-confirm.png) #dff2bf no-repeat 20px center;
+}
+/* line 113, ../compass/sass/_miscellaneous.scss */
+.flash_message.message_error {
+  color: #d8000c;
+  background: url(../img/message-error.png) #ffbaba no-repeat 20px center;
 }
 
 /* line 1, ../compass/sass/_header.scss */
@@ -8684,6 +8731,191 @@ header h1 a {
 /* line 87, ../compass/sass/_featured_latest_products.scss */
 #latest_products li {
   margin: 0 10px 20px 10px;
+}
+
+/* line 1, ../compass/sass/_products.scss */
+.product_wrapper {
+  max-width: 220px;
+  margin: auto;
+  background: #e7ebf0;
+  padding: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  -webkit-transition-duration: 0.6s;
+  -moz-transition-duration: 0.6s;
+  -o-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  position: relative;
+}
+/* line 11, ../compass/sass/_products.scss */
+.product_wrapper figure {
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 16, ../compass/sass/_products.scss */
+.product_wrapper figcaption {
+  text-align: left;
+  padding-left: 22px;
+  color: #303740;
+  font-size: 14px;
+  padding-top: 20px;
+}
+/* line 23, ../compass/sass/_products.scss */
+.product_wrapper figcaption span {
+  font-size: 12px;
+  color: #707780;
+}
+/* line 29, ../compass/sass/_products.scss */
+.product_wrapper img {
+  display: block;
+  max-width: 207px;
+  max-height: 136px;
+  margin: auto;
+}
+/* line 36, ../compass/sass/_products.scss */
+.product_wrapper > a > span {
+  background: url(../img/price-circle.png) no-repeat;
+  width: 78px;
+  height: 78px;
+  position: absolute;
+  bottom: 66px;
+  right: 23px;
+  line-height: 78px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+}
+/* line 49, ../compass/sass/_products.scss */
+.product_wrapper:hover {
+  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* line 54, ../compass/sass/_products.scss */
+.product_images, .product_large, .product_thumb {
+  background: #f1f5f8;
+  position: relative;
+  margin: 0;
+}
+/* line 59, ../compass/sass/_products.scss */
+.product_images img, .product_large img, .product_thumb img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+/* line 67, ../compass/sass/_products.scss */
+.product_large {
+  width: 343px;
+  height: 262px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* line 75, ../compass/sass/_products.scss */
+.product_thumb {
+  width: 85px;
+  height: 72px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  float: left;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+/* line 85, ../compass/sass/_products.scss */
+.product_thumb:first-child {
+  margin-left: 0;
+}
+
+/* line 88, ../compass/sass/_products.scss */
+ul.tabs {
+  margin: 0;
+  margin-top: 70px;
+  padding: 0;
+  float: left;
+  list-style: none;
+  height: 40px;
+  width: 100%;
+}
+/* line 97, ../compass/sass/_products.scss */
+ul.tabs li {
+  float: left;
+  margin: 0;
+  margin-left: 8px;
+  cursor: pointer;
+  padding: 0 28px;
+  height: 40px;
+  line-height: 40px;
+  border-left: none;
+  color: #474c52;
+  font-size: 16px;
+  background: #d2d9df;
+  overflow: hidden;
+  position: relative;
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+/* line 114, ../compass/sass/_products.scss */
+ul.tabs li:first-child {
+  margin-left: 0;
+}
+/* line 116, ../compass/sass/_products.scss */
+ul.tabs li:hover {
+  background: #ccc;
+}
+/* line 118, ../compass/sass/_products.scss */
+ul.tabs li.active {
+  background: #fff;
+}
+
+/* line 124, ../compass/sass/_products.scss */
+.tab_container {
+  border-top: none;
+  clear: both;
+  float: left;
+  width: 100%;
+  background: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+/* line 135, ../compass/sass/_products.scss */
+.tab_container .tab_content {
+  padding: 20px;
+  font-size: 14px;
+  display: none;
 }
 
 /* line 1, ../compass/sass/_footer.scss */

@@ -6,4 +6,9 @@ return array(
 	// 'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
 	
 	'admin' => 'admin/dashboard',
+	'categories' => 'categories/index',
+	'shopping-cart' => 'products/shopping_cart',
+	'shopping-cart/confirmation' => 'products/order_confirmation',
+	'shopping-cart/cancel' => 'products/order_cancel',
+	'shopping-cart/buy' => 'products/order_buy'
 );

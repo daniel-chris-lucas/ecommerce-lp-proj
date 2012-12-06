@@ -8,7 +8,8 @@ class Model_Orderproduct extends \Orm\Model
 		'price',
 		'order_id',
 		'created_at',
-		'updated_at'
+		'updated_at',
+		'quantity'
 	);
 
 	protected static $_observers = array(

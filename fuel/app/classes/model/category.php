@@ -6,7 +6,8 @@ class Model_Category extends \Orm\Model
 	protected static $_properties = array(
 		'id',
 		'name',
-		'parent_id'
+		'parent_id',
+		'slug'
 	);
 
 
@@ -19,6 +20,8 @@ class Model_Category extends \Orm\Model
 	        'cascade_delete' => false,
 	    )
 	);
+
+	protected static $_has_many = array( 'products' );
 
 
 	public static function count_categories()
@@ -42,6 +45,21 @@ class Model_Category extends \Orm\Model
 		}
 
 		return $children;
+	}
+
+
+	public static function generate_categories_subcategories()
+	{
+		$result = DB::query('
+					  SELECT parent.name AS parent_name, parent.slug AS parent_slug, child1.name AS child1_name, child1.slug AS child1_slug
+					  FROM categories AS parent
+					  LEFT OUTER JOIN categories AS child1 ON child1.parent_id = parent.id
+					  WHERE parent.parent_id IS NULL
+					  ORDER BY parent_name, child1_name 
+				  ')->execute()
+					->as_array();
+
+		return $result;
 	}
 
 }

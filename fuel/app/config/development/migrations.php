@@ -18,6 +18,11 @@ return array(
 				9 => '010_create_mailsubscribers',
 				10 => '011_create_orders',
 				11 => '012_create_orderproducts',
+				12 => '013_add_slug_to_categories',
+				13 => '014_add_folder_to_images',
+				14 => '015_add_slug_to_products',
+				15 => '016_add_quantity_to_orderproducts',
+				16 => '017_add_total_to_orders',
 			),
 		),
 		'module' => 

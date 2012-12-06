@@ -8249,6 +8249,54 @@ table .table-icons.delete {
   background-position: 0 0;
 }
 
+/* line 40, ../../compass/sass/admin/_miscellaneous.scss */
+.form-inline label {
+  margin-right: 15px;
+}
+
+/* line 42, ../../compass/sass/admin/_miscellaneous.scss */
+.delete_icon {
+  background: url(../../img/admin/delete.png) no-repeat 0 0;
+  display: inline-block;
+  height: 14px;
+  text-indent: 18px;
+  line-height: 12px;
+  margin-left: 10px;
+  color: #222;
+  text-decoration: none;
+}
+/* line 53, ../../compass/sass/admin/_miscellaneous.scss */
+.delete_icon:hover {
+  color: #222;
+}
+
+/* line 59, ../../compass/sass/admin/_miscellaneous.scss */
+.flash_message {
+  border: 1px solid;
+  padding: 15px 10px 15px 70px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 50%;
+  width: 500px;
+  margin-left: -292px;
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 71, ../../compass/sass/admin/_miscellaneous.scss */
+.flash_message.message_confirm {
+  color: #4f8a10;
+  background: url(../../img/message-confirm.png) #dff2bf no-repeat 20px center;
+}
+/* line 76, ../../compass/sass/admin/_miscellaneous.scss */
+.flash_message.message_error {
+  color: #d8000c;
+  background: url(../../img/message-error.png) #ffbaba no-repeat 20px center;
+}
+
 /* line 1, ../../compass/sass/admin/_header.scss */
 header {
   font-size: 12px;

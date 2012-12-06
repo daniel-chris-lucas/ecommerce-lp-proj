@@ -2,22 +2,26 @@
 class MyRules
 {
 
-	public static function _validation_unique( $val, $options )
+	public static function _validation_unique( $val, $options, $name = null )
 	{
 		list( $table, $field ) = explode( '.', $options );
 
-		$result = \DB::select( "LOWER (\"$field\")" )
-					->where( $field, '=', Str::lower( $val) )
+		$res = \DB::select( "LOWER (\"$field\")" )
+					->where( $field, '=', Str::lower( $val ) )
 					->from( $table )
 					->execute();
 
-		return ! ( $result->count() > 0 );
-	}
+		if( $name != null ) {
+			if( ( $res->count() > 0 ) )
+			{
+				if( Str::lower( $name ) == Str::lower( $val ) )
+				{
+					return true;
+				}
+			}
+		}
 
-
-	public function _validation_is_upper( $val )
-	{
-		return $val === strtoupper( $val );
+		return ! ( $res->count() > 0 );
 	}
 
 }

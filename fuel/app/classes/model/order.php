@@ -2,11 +2,13 @@
 
 class Model_Order extends \Orm\Model
 {
+
 	protected static $_properties = array(
 		'id',
 		'user_id',
 		'created_at',
-		'updated_at'
+		'updated_at',
+		'total'
 	);
 
 	protected static $_observers = array(
@@ -19,4 +21,7 @@ class Model_Order extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
+
+	protected static $_has_many = array( 'orderproducts' );
+
 }

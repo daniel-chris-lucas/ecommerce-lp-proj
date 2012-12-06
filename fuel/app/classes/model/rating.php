@@ -22,4 +22,6 @@ class Model_Rating extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
+
+	protected static $_belongs_to = array( 'user' );
 }

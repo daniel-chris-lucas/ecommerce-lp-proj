@@ -1,0 +1,140 @@
+.product_wrapper {
+	max-width: 220px;
+	margin: auto;
+	background: #e7ebf0;
+	padding: 5px;
+	@include border-radius( 3px );
+	@include single-box-shadow( rgba(0, 0, 0, .4), 1px, 1px, 3px );
+	@include transition-duration( .6s );
+	position: relative;
+
+	figure {
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	figcaption {
+		text-align: left;
+		padding-left: 22px;
+		color: #303740;
+		font-size: 14px;
+		padding-top: 20px;
+
+		span {
+			font-size: 12px;
+			color: #707780;
+		}
+	}
+
+	img {
+		display: block;
+		max-width: 207px;
+		max-height: 136px;
+		margin: auto;
+	}
+
+	&>a>span {
+		background: url(../img/price-circle.png) no-repeat;
+		width: 78px;
+		height: 78px;
+		position: absolute;
+		bottom: 66px;
+		right: 23px;
+		line-height: 78px;
+		text-align: center;
+		font-size: 16px;
+		color: white;
+	}
+
+	&:hover {
+		@include single-box-shadow( rgba(0, 0, 0, .5), 2px, 2px, 8px );
+	}
+}
+
+.product_images {
+	background: #f1f5f8;
+	position: relative;
+	margin: 0;
+
+	img {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+}
+
+.product_large {
+	@extend .product_images;
+	width: 343px;
+	height: 262px;
+	@include border-radius( 6px );
+	@include single-box-shadow( rgba(0,0,0,.4), 1px, 1px, 6px );
+}
+
+.product_thumb {
+	@extend .product_images;
+	width: 85px;
+	height: 72px;
+	@include border-radius( 4px );
+	@include single-box-shadow( rgba(0,0,0,.3), 1px, 1px, 4px );
+	float: left;
+	margin-right: 15px;
+	margin-top: 15px;
+
+	&:first-child { margin-left: 0; }
+}
+
+ul.tabs {
+	margin: 0;
+	margin-top: 70px;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 40px;
+	width: 100%;
+
+	li {
+		float: left;
+		margin: 0;
+		margin-left: 8px;
+		cursor: pointer;
+		padding: 0 28px;
+		height: 40px;
+		line-height: 40px;
+		border-left: none;
+		color: #474c52;
+		font-size: 16px;
+		background: #d2d9df;
+		overflow: hidden;
+		position: relative;
+		@include border-top-right-radius( 3px );
+		@include border-top-left-radius( 3px );
+
+		&:first-child { margin-left: 0; }
+
+		&:hover { background: #ccc; }
+
+		&.active {
+			background: #fff;
+		}
+	}
+}
+
+.tab_container {
+	border-top: none;
+	clear: both;
+	float: left;
+	width: 100%;
+	background: #fff;
+
+	@include border-radius( 4px );
+	@include border-top-left-radius( 0 );
+	@include single-box-shadow( rgba(0,0,0,.4), 1px, 1px, 4px );
+
+	.tab_content {
+		padding: 20px;
+		font-size: 14px;
+		display: none;
+	}
+}

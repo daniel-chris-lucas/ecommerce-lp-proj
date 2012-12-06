@@ -14,5 +14,5 @@
 </ul>
 
 <p>
-	<a href="<?= Uri::create( 'admin/users' ) ?>">Return to users</a>
+	<a href="<?= Uri::create( 'admin/users' ) ?>" class="btn">Return to Users</a>
 </p>

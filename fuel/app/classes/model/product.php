@@ -6,6 +6,7 @@ class Model_Product extends \Orm\Model
 		'id',
 		'name',
 		'description',
+		'slug',
 		'category_id',
 		'price',
 		'created_at',
@@ -22,4 +23,22 @@ class Model_Product extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
+
+	protected static $_belongs_to = array(
+	    'category' => array(
+	        'key_from' => 'category_id',
+	        'model_to' => 'Model_Category',
+	        'key_to' => 'id',
+	        'cascade_save' => true,
+	        'cascade_delete' => false,
+	    )
+	);
+
+	protected static $_has_many = array( 'images' );
+
+
+	public function create_slug( $string ){
+	   $slug=preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
+	   return Str::lower( $slug );
+	}
 }

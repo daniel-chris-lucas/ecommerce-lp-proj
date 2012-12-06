@@ -5,6 +5,8 @@
 error_reporting(-1);
 ini_set('display_errors', 1);
 
+if( !defined( __DIR__ ) )define( __DIR__, dirname(__FILE__) );
+
 /**
  * Website document root
  */

@@ -54,11 +54,18 @@ class Controller_Admin_Categories extends Controller_Admin_Base
 	public function action_create()
 	{
 		$val = Validation::forge();
+		$val->add_callable( 'myrules' );
 
 		$val->add( 'name', 'Name' )
 			->add_rule( 'required' )
+			->add_rule( 'unique', 'categories.name' )
 			->add_rule( 'min_length', 3 )
 			->add_rule( 'max_length', 25 );
+		$val->add( 'slug', 'Slug' )
+			->add_rule( 'required' )
+			->add_rule( 'unique', 'categories.slug' )
+			->add_rule( 'min_length', 3 )
+			->add_rule( 'max_length', 30 );
 		$val->add( 'parent', 'Parent Category' )
 			->add_rule( 'numeric_min', 1 )
 			->add_rule( 'numeric_max', 1000 );
@@ -68,6 +75,7 @@ class Controller_Admin_Categories extends Controller_Admin_Base
 			$category = Model_Category::forge();
 			$category->name = $val->validated('name');
 			$category->parent_id = $val->validated( 'parent' ) ? $val->validated( 'parent' ) : null;
+			$category->slug = $val->validated( 'slug' );
 			$category->save();
 
 			Session::set_flash( 'flash_message', 'New category has been successfully created' );
@@ -88,11 +96,18 @@ class Controller_Admin_Categories extends Controller_Admin_Base
 	{
 		$category = Model_Category::find( $category_id );
 		$val = Validation::forge();
+		$val->add_callable( 'myrules' );
 
 		$val->add( 'name', 'Name' )
 			->add_rule( 'required' )
+			->add_rule( 'unique', 'categories.name', $category->name )
 			->add_rule( 'min_length', 3 )
 			->add_rule( 'max_length', 25 );
+		$val->add( 'slug', 'Slug' )
+			->add_rule( 'required' )
+			->add_rule( 'unique', 'categories.slug', $category->slug )
+			->add_rule( 'min_length', 3 )
+			->add_rule( 'max_length', 30 );
 		$val->add( 'parent', 'Parent Category' )
 			->add_rule( 'numeric_min', 1 )
 			->add_rule( 'numeric_max', 1000 );
@@ -127,10 +142,10 @@ class Controller_Admin_Categories extends Controller_Admin_Base
 		if( count( $children_categories ) == 0 )
 		{
 			$category->delete();
-			Session::set_flash( 'flssh_message', 'Category has been deleted' );
+			Session::set_flash( 'flash_message', 'Category has been deleted' );
 		}
 		else
-			Session::set_flash( 'flash_message', 'Category has children. It can not be deleted.' );
+			Session::set_flash( 'flash_message_error', 'Category has children. It can not be deleted.' );
 
 		Response::redirect( 'admin/categories' );
 	}

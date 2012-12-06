@@ -75,7 +75,8 @@ class Controller_Admin_Users extends Controller_Admin_Base
 			->add_rule( 'max_length', 25 );
 		$val->add( 'email', 'Email Address' )
 			->add_rule( 'required' )
-			->add_rule( 'valid_email' );
+			->add_rule( 'valid_email' )
+			->add_rule( 'unique', 'users.email', $user->email );;
 		$val->add( 'tel', 'Telephone' )
 			->add_rule( 'match_pattern', '/^([1]-)?[0-9]{3}-[0-9]{3}-[0-9]{4}$/i' );
 		$val->add( 'birth_day' )
@@ -110,7 +111,8 @@ class Controller_Admin_Users extends Controller_Admin_Base
 		$val->add( 'username', 'Username' )
 			->add_rule( 'required' )
 			->add_rule( 'min_length', 3 )
-			->add_rule( 'max_length', 15 );
+			->add_rule( 'max_length', 15 )
+			->add_rule( 'unique', 'users.username', $user->username );
 		$val->add( 'password', 'Password' )
 			->add_rule( 'min_length', 7 )
 			->add_rule( 'max_length', 100 );
@@ -125,13 +127,6 @@ class Controller_Admin_Users extends Controller_Admin_Base
 		if( Input::method() == 'POST' && $val->run() )
 		{
 			$salt = 'j1V]hr$bvVL_{lj_~P^(ogTfm$Gie}QyyKZw$zWcWdaR';
-			
-			$regular_id = Model_Role::find('first', array(
-				'where' => array(
-					array( 'name', 'regular' )
-				),
-				'limit' => 1
-			))['id'];
 
 			// save the user's information
 			$user->first_name = $val->validated( 'first_name' );
@@ -198,7 +193,7 @@ class Controller_Admin_Users extends Controller_Admin_Base
 		$user = Model_User::find( $user_id );
 
 		if( $user->role->name === 'administrator' || $user->role->name === 'moderator' )
-			Session::set_flash( 'flash_message', 'User could not be deleted. Please remove user privileges to delete' );
+			Session::set_flash( 'flash_message_error', 'User could not be deleted. Please remove user privileges to delete' );
 		else
 		{
 			$user->delete();

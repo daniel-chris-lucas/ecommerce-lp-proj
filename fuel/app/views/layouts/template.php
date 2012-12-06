@@ -25,10 +25,16 @@
         <![endif]-->
 
         <!-- start main header -->
-        <?php echo Session::get_flash( 'flash_message' ) ?>
         <header>
             <div class="container">
                 <!-- start top row of header -->
+                
+                <?php if( Session::get_flash( 'flash_message' ) ) : ?>
+                    <div class="flash_message message_confirm"><?php echo Session::get_flash( 'flash_message' ) ?></div>
+                <?php elseif ( Session::get_flash( 'flash_message_error' ) ) : ?>
+                    <div class="flash_message message_error"><?php echo Session::get_flash( 'flash_message_error' ) ?></div>
+                <?php endif; ?>
+                
                 <div class="row">
                     <div class="span3">
                         <h1>
@@ -50,11 +56,6 @@
                         <?php else : ?>
                             <a href="<?php echo Uri::create( 'users/logout' ) ?>" class="login_register">Logout</a>
                         <?php endif ?>
-                        <select id="currency">
-                            <option value="euros">Euros</option>
-                            <option value="GB Pounds">GB Pounds</option>
-                            <option value="US Dollars">US Dollars</option>
-                        </select>
                     </div>
                 </div>
                 <!-- end top row of header -->
@@ -64,7 +65,7 @@
                     <nav id="main_nav" class="span10">
                         <ul>
                             <li><a href="<?php echo Uri::base() ?>" class="active">Home<span></span></a></li>
-                            <li><a href="#">Categories</a></li>
+                            <li><a href="<?php echo Uri::create( 'categories' ) ?>">Categories</a></li>
                             <?php if( isset( $current_user ) ) : ?>
                                 <li><a href="<?php echo Uri::create( 'users/account' ) ?>">My Account</a></li>
                             <?php endif ?>
@@ -76,7 +77,7 @@
                     </nav>
                     <div class="span2">
                         <aside class="wrap_cart">
-                            <a href="#" class="cart_status">$12.90</a>
+                            <a href="<?= Uri::create( 'shopping-cart' ) ?>" class="cart_status">&euro; <?= number_format( (float) $cart_total, 2, '.', '' ) ?></a>
                         </aside>
                     </div>
                 </div>
@@ -90,7 +91,8 @@
             <div class="container">
                 <nav id="cart_nav" class="span12">               
                     <ul>
-                        <li><a href="#" class="my_shopping_cart">Shopping Cart</a></li>
+                        <li
+                        ><a href="<?= Uri::create( 'shopping-cart' ) ?>" class="my_shopping_cart">Shopping Cart</a></li>
                         <li><a href="#" class="checkout_cart">Checkout</a></li>
                     </ul>                
                 </nav>
@@ -105,9 +107,9 @@
         <!-- start about + latest products -->
         <div class="row">
             <div class="container">
-                <?php if( Uri::segment(1) !== 'users' && Uri::segment(2) !== 'contact' ) echo View::forge( 'layouts/sidebar' ) ?>
+                <?php if( Uri::segment(1) !== 'users' && Uri::segment(2) !== 'contact' && Uri::segment(1) !== 'categories' && Uri::segment(1) !== 'shopping-cart' ) echo View::forge( 'layouts/sidebar' ) ?>
                 
-                <div id="main" class="<?php echo ( ( Uri::segment(1) == 'users' ) || ( Uri::segment(2) == 'contact' ) ) ? 'span12' : 'span9' ?> about" role="main">
+                <div id="main" class="<?php echo ( ( Uri::segment(1) == 'users' ) || ( Uri::segment(2) == 'contact' ) || ( Uri::segment(1) == 'categories' ) || Uri::segment(1) == 'shopping-cart' ) ? 'span12' : 'span9' ?> about" role="main">
                     <?php echo $content ?>
                 </div>
             </div>
@@ -214,7 +216,7 @@
         
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
 
         <?php echo Asset::js( array( 'vendor/bootstrap.min.js', 'gmaps.js', 'plugins.js', 'main.js' ) ) ?>
 

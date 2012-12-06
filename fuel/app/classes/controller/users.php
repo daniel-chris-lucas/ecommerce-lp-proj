@@ -36,11 +36,11 @@ class Controller_Users extends Controller_Base
 			{
 				Session::set( 'username', $user->username );
 				Session::set_flash( 'flash_message', "Welcome back {$user->first_name} {$user->last_name}, you have successfully logged in" );
-				Response::redirect( Uri::base() );
+				Input::get( 'red' ) ? Response::redirect( Input::get( 'red' ) ) : Response::redirect( Uri::base() );
 			}
 			else
 			{
-				Session::set_flash( 'flash_message', 'Login failed. Please try again.' );
+				Session::set_flash( 'flash_message_error', 'Login failed. Please try again.' );
 				Response::redirect( 'users/connect' );
 			}
 		}
@@ -54,6 +54,7 @@ class Controller_Users extends Controller_Base
 	{
 		// form validation
 		$val = Validation::forge();
+		$val->add_callable( 'myrules' );
 
 		$val->add( 'first_name', 'First Name' )
 			->add_rule( 'required' )
@@ -64,6 +65,7 @@ class Controller_Users extends Controller_Base
 			->add_rule( 'min_length', 2 )
 			->add_rule( 'max_length', 25 );
 		$val->add( 'email', 'Email Address' )
+			->add_rule( 'unique', 'users.email' )
 			->add_rule( 'required' )
 			->add_rule( 'valid_email' );
 		$val->add( 'tel', 'Telephone' )
@@ -99,6 +101,7 @@ class Controller_Users extends Controller_Base
 
 		$val->add( 'username', 'Username' )
 			->add_rule( 'required' )
+			->add_rule( 'unique', 'users.username' )
 			->add_rule( 'min_length', 3 )
 			->add_rule( 'max_length', 15 );
 		$val->add( 'password', 'Password' )
@@ -112,6 +115,7 @@ class Controller_Users extends Controller_Base
 		// if eveything in the form is correct save the information
 		if( Input::method() == 'POST' && $val->run() )
 		{
+
 			$salt = 'j1V]hr$bvVL_{lj_~P^(ogTfm$Gie}QyyKZw$zWcWdaR';
 			
 			$regular_id = Model_Role::find('first', array(
@@ -126,7 +130,7 @@ class Controller_Users extends Controller_Base
 			$user->last_name = $val->validated( 'last_name' );
 			$user->email = $val->validated( 'email' );
 			$user->tel = $val->validated( 'tel' );
-			$user->date_of_birth = $val->validated( 'birth_day' ) . '-' . ($val->validated( 'birth_month' ) + 1) . '-' . $val->validated( 'birth_year' );
+			$user->date_of_birth = $val->validated( 'birth_day' ) . '-' . $val->validated( 'birth_month' ) . '-' . $val->validated( 'birth_year' );
 			$user->street = $val->validated( 'street' );
 			$user->street_number = $val->validated( 'street_number' ) ? $val->validated( 'street_number' ) : null;
 			$user->town = $val->validated( 'town' );
@@ -155,7 +159,7 @@ class Controller_Users extends Controller_Base
 			}
 			catch( \EmailSendingFailedException $e )
 			{
-				Session::set_flash( 'flash_message', 'Your activation email could not be sent. Please try again later.' );
+				Session::set_flash( 'flash_message_error', 'Your activation email could not be sent. Please try again later.' );
 			}
 			
 			Response::redirect( Uri::base() );
@@ -169,6 +173,7 @@ class Controller_Users extends Controller_Base
 		}
 		$months = 'January, February, March, April, May, June, July, August, September, October, November, December';
 		$birth_months = explode( ', ', $months);
+
 		for( $i = date('Y')-12; $i >= date('Y')-100; $i-- )
 		{
 			$birth_years[] = $i;
@@ -202,11 +207,11 @@ class Controller_Users extends Controller_Base
 			$user->activated = 1;
 			$user->save();
 
-			Session::set_flash( 'flash_message', 'Your account has been succesfully activated. You may now log in and start buying!' );
+			Session::set_flash( 'flash_message', 'Your account has been successfully activated. You may now log in and start buying!' );
 		}
 		else
 		{
-			Session::set_flash( 'flash_message', 'This confirmation code has expired.' );
+			Session::set_flash( 'flash_message_error', 'This confirmation code has expired.' );
 		}
 		
 		Response::redirect( Uri::base() );
@@ -225,8 +230,16 @@ class Controller_Users extends Controller_Base
 
 	public function action_account()
 	{
+		$orders = Model_Order::find( 'all', array(
+			'where' => array(
+				array( 'user_id', '=', $this->current_user->id )
+			)
+		));
+
 		$this->template->title = 'Users &raquo; Account';
-		$this->template->content = View::forge('users/account');
+		$this->template->content = View::forge( 'users/account', array(
+			'orders' => $orders
+		));
 	}
 
 
@@ -348,6 +361,24 @@ class Controller_Users extends Controller_Base
 			'current_birth_day' => $dob[0],
 			'current_birth_month' => $dob[1]-1,
 			'current_birth_year' => $dob[2],
+		));
+	}
+
+
+	public function action_orders( $order_id )
+	{
+		$order = Model_Order::find( 'first', array(
+			'where' => array(
+				array( 'id', '=', $order_id )
+			)
+		));
+
+		if( !isset( $this->current_user ) || $this->current_user->id != $order->user_id )
+			Response::redirect( Uri::base() );
+
+		$this->template->title = 'Users &raquo; Orders';
+		$this->template->content = View::forge( 'users/orders', array(
+			'order' => $order
 		));
 	}
 
