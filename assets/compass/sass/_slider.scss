@@ -1,6 +1,23 @@
 #slider {
 	height: 537px;
 	position: relative;
+	overflow: hidden;
+	width: 1170px;
+
+	ul {
+		position: absolute;
+		list-style: none;
+		white-space: nowrap;
+		padding: 0;
+		margin: 0;
+
+		li {
+			margin-left: 0 !important;
+			display: inline-block;
+			white-space: nowrap;
+			width: 1170px;
+		}
+	}
 }
 
 .slider-nav {
@@ -10,6 +27,7 @@
 	height: 54px;
 	position: absolute;
 	margin-top: 183px;
+	z-index: 450;
 }
 
 .slider_prev {

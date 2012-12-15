@@ -8623,29 +8623,47 @@ header h1 a {
 #slider {
   height: 537px;
   position: relative;
+  overflow: hidden;
+  width: 1170px;
+}
+/* line 7, ../compass/sass/_slider.scss */
+#slider ul {
+  position: absolute;
+  list-style: none;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+}
+/* line 14, ../compass/sass/_slider.scss */
+#slider ul li {
+  margin-left: 0 !important;
+  display: inline-block;
+  white-space: nowrap;
+  width: 1170px;
 }
 
-/* line 6, ../compass/sass/_slider.scss */
+/* line 23, ../compass/sass/_slider.scss */
 .slider-nav, .slider_prev, .slider_next {
   display: block;
   width: 50px;
   height: 54px;
   position: absolute;
   margin-top: 183px;
+  z-index: 450;
 }
 
-/* line 15, ../compass/sass/_slider.scss */
+/* line 33, ../compass/sass/_slider.scss */
 .slider_prev {
   background: url(../img/slider-prev.png);
 }
 
-/* line 20, ../compass/sass/_slider.scss */
+/* line 38, ../compass/sass/_slider.scss */
 .slider_next {
   background: url(../img/slider-next.png);
   right: 0;
 }
 
-/* line 26, ../compass/sass/_slider.scss */
+/* line 44, ../compass/sass/_slider.scss */
 .left_part {
   margin-left: 70px;
   padding-top: 20px;
@@ -8653,13 +8671,13 @@ header h1 a {
   width: 405px;
 }
 
-/* line 33, ../compass/sass/_slider.scss */
+/* line 51, ../compass/sass/_slider.scss */
 .right_part {
   float: left;
   width: 635px;
   white-space: normal;
 }
-/* line 38, ../compass/sass/_slider.scss */
+/* line 56, ../compass/sass/_slider.scss */
 .right_part h1 {
   color: #38414b;
   font-size: 36px;
@@ -8668,7 +8686,7 @@ header h1 a {
   text-shadow: 1px 1px 1px white;
   line-height: 40px;
 }
-/* line 47, ../compass/sass/_slider.scss */
+/* line 65, ../compass/sass/_slider.scss */
 .right_part .product_description {
   color: #7e8a97;
   width: 520px;
@@ -8676,7 +8694,7 @@ header h1 a {
   padding: 20px 0;
 }
 
-/* line 55, ../compass/sass/_slider.scss */
+/* line 73, ../compass/sass/_slider.scss */
 .discount_sticker {
   background: url(../img/discount.png);
   width: 117px;
@@ -8685,7 +8703,7 @@ header h1 a {
   margin-top: 20px;
   position: absolute;
 }
-/* line 63, ../compass/sass/_slider.scss */
+/* line 81, ../compass/sass/_slider.scss */
 .discount_sticker .old {
   font-size: 18px;
   color: #c4cbd1;
@@ -8694,7 +8712,7 @@ header h1 a {
   margin-top: 20px;
   text-decoration: line-through;
 }
-/* line 72, ../compass/sass/_slider.scss */
+/* line 90, ../compass/sass/_slider.scss */
 .discount_sticker .new {
   font-size: 36px;
   color: #39b3ca;
