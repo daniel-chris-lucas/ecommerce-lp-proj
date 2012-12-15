@@ -27,8 +27,7 @@
         <!-- start main header -->
         <header>
             <div class="container">
-                <!-- start top row of header -->
-                
+                <!-- start top row of header -->      
                 <?php if( Session::get_flash( 'flash_message' ) ) : ?>
                     <div class="flash_message message_confirm"><?php echo Session::get_flash( 'flash_message' ) ?></div>
                 <?php elseif ( Session::get_flash( 'flash_message_error' ) ) : ?>
@@ -45,14 +44,28 @@
                         </h1>
                     </div>
                     <div class="span9">
-                        <a href="#" class="search">Search</a>
-                        <div class="search_toggle">
-                            <form action="">
-                                <input id="word_search" placeholder="Type keyword and hit enter">
-                            </form>
-                        </div>
+                        <a href="<?= Uri::create( 'search' ) ?>" class="search">Search</a>
                         <?php if( !isset( $current_user ) ) : ?>
-                            <a href="<?php echo Uri::create( 'users/connect' ) ?>" class="login_register">Login <span>-- or --</span> Register</a>
+                            <a href="<?php echo Uri::create( 'users/connect' ) ?>" class="login_register login_button">Login <span>-- or --</span> Register</a>
+                            <aside class="login_frame">
+                                <div class="col1">
+                                    <h2 class="title">Login</h2>
+                                    <?= Form::open( 'users/quick_login' ) ?>
+                                        <input type="text" name="username" id="username" placeholder="Username">
+                                        <input type="password" name="password" id="password" placeholder="Password">
+                                        <button type="submit" name="login_submit" class="btn btn-danger">Sign In</button>
+                                    </form>
+                                </div>
+                                <div class="col2">
+                                    <h2 class="title">Register</h2>
+                                    <p>
+                                        New User? By creating an account you will be able to shop faster, be up to date on our
+                                        latest products...
+
+                                        <a href="<?= Uri::create( 'users/register' ) ?>" class="btn btn-warning" style="margin-top: 15px;">Register Now</a>
+                                    </p>
+                                </div>
+                            </aside>
                         <?php else : ?>
                             <a href="<?php echo Uri::create( 'users/logout' ) ?>" class="login_register">Logout</a>
                         <?php endif ?>
@@ -65,7 +78,26 @@
                     <nav id="main_nav" class="span10">
                         <ul>
                             <li><a href="<?php echo Uri::base() ?>" class="active">Home<span></span></a></li>
-                            <li><a href="<?php echo Uri::create( 'categories' ) ?>">Categories</a></li>
+                            <li class="drop_menu">
+                                <a href="<?php echo Uri::create( 'categories' ) ?>">Categories</a>
+                                <div class="megamenu">
+                                    <ul class="sub_menu">
+                                        <?php foreach( $main_categories as $name => $subCat ) : ?>
+                                            <?php if( !empty( $subCat[0]['child_name'] ) ) : ?>
+                                                <li><a href="<?= Uri::create( 'categories/view/' . $subCat[0]['parent_slug'] ) ?>"><?= $name ?></a>
+                                                    <ul>
+                                                        <?php foreach( $subCat as $cat ) : ?>
+                                                            <li><a href="<?= Uri::create( 'categories/view/' . $cat['child_slug'] ) ?>"><?= $cat['child_name'] ?></a></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                </li>
+                                            <?php else : ?>
+                                                <li><a href="<?= Uri::create( 'categories/view/' . $subCat[0]['parent_slug'] ) ?>"><?= $name ?></a></li>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </li>
                             <?php if( isset( $current_user ) ) : ?>
                                 <li><a href="<?php echo Uri::create( 'users/account' ) ?>">My Account</a></li>
                             <?php endif ?>
@@ -93,7 +125,7 @@
                     <ul>
                         <li
                         ><a href="<?= Uri::create( 'shopping-cart' ) ?>" class="my_shopping_cart">Shopping Cart</a></li>
-                        <li><a href="#" class="checkout_cart">Checkout</a></li>
+                        <li><a href="<?= Uri::create( 'shopping-cart/confirmation' ) ?>" class="checkout_cart">Checkout</a></li>
                     </ul>                
                 </nav>
             </div>

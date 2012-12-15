@@ -5,18 +5,7 @@
     
     <?php $newCategories = array() ?>
     <ul id="category_box">
-        <?php
-        	foreach( $main_categories as $main_category )
-        	{
-	        	$newCategories[ $main_category['parent_name']][] = array( 
-					'child_name' => $main_category['child1_name'],
-					'child_slug' => $main_category['child1_slug'], 
-					'parent_slug' => $main_category['parent_slug'] 
-				);
-        	}
-        ?>
-        
-        <?php foreach( $newCategories as $name => $subCat ) : ?>
+        <?php foreach( $main_categories as $name => $subCat ) : ?>
     	    <?php if( !empty( $subCat[0]['child_name'] ) ) : ?>
     			<li><a href="<?= Uri::create( 'categories/view/' . $subCat[0]['parent_slug'] ) ?>"><?= $name ?></a>
     	    		<ul>

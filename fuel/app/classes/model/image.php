@@ -15,12 +15,12 @@ class Model_Image extends \Orm\Model
 	{
 		$img = Model_Image::find( $image_id );
 
-		list( $folder, $thumb ) = explode( DS, $img->name );
+		$thumb = $img->name;
 		$ext = strrchr( $thumb, '.' );
 		if( $ext !== false ) $thumb = substr( $thumb, 0, -strlen( $ext ) );
-		$thumb = $folder . DS . $thumb . '-thumbnail' . $ext;
+		$thumb = $img->folder . DS . $thumb . '-thumbnail' . $ext;
 
-		unlink( 'assets/uploads/' . $img->name );
+		unlink( 'assets/uploads/' . $img->folder . DS . $img->name );
 		unlink( 'assets/uploads/' . $thumb );
 	}
 

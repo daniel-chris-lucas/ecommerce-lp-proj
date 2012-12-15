@@ -16,7 +16,7 @@
 			
 				<!-- display the first image in big -->
 				<figure class="product_large">
-					<a href="<?= '/assets/uploads/' . $image->folder . DS . $image->name ?>">
+					<a href="<?= '/assets/uploads/' . $image->folder . DS . $image->name ?>" class="fancybox" rel="group">
 						<?php if( $image_width > $image_height ) : ?>
 							<?php $img_dims = Model_Image::calculate_width( $image_width, $image_height, 330 ); ?>
 							<img src="<?= '/assets/uploads/' . $image->folder . DS . $image->name ?>" alt="<?= $image->alt ?>" width="<?= $img_dims['width'] ?>" 
@@ -34,7 +34,7 @@
 			
 				<!-- display smaller images -->
 				<figure class="product_thumb">
-					<a href="<?= '/assets/uploads/' . $image->folder . DS . $image->name ?>">
+					<a href="<?= '/assets/uploads/' . $image->folder . DS . $image->name ?>" class="fancybox" rel="group">
 						<?php if( $image_width > $image_height ) : ?>
 							<?php $img_dims = Model_Image::calculate_width( $image_width, $image_height, 75 ); ?>
 							<img src="<?= '/assets/uploads/' . $image->folder . DS . $image->name ?>" alt="<?= $image->alt ?>" width="<?= $img_dims['width'] ?>" 
@@ -80,7 +80,7 @@
 <!-- start tab box -->
 <div class="tab_container">
 	<div id="tab1" class="tab_content">
-		<?= $product->description ?>
+		<?= nl2br( $product->description ) ?>
 	</div>
 	
 	<div id="tab2" class="tab_content">

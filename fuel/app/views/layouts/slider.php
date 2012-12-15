@@ -12,7 +12,7 @@
                     <span class="old">$199</span>
                     <span class="new">$122</span>
                 </div>
-                <h1>Stylish Jacket, be your best deal</h1>
+                <h1>Stylish Jacket</h1>
                 <div class="product_description">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ab iure nihil quidem odit architecto temporibus aperiam nobis rerum..
                 </div>

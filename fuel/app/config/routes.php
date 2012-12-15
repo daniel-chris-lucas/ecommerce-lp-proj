@@ -10,5 +10,6 @@ return array(
 	'shopping-cart' => 'products/shopping_cart',
 	'shopping-cart/confirmation' => 'products/order_confirmation',
 	'shopping-cart/cancel' => 'products/order_cancel',
-	'shopping-cart/buy' => 'products/order_buy'
+	'shopping-cart/buy' => 'products/order_buy',
+	'search' => 'products/search'
 );

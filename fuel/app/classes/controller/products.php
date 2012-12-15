@@ -264,4 +264,30 @@ class Controller_Products extends Controller_Base
 		));
 	}
 
+
+	public function action_search( $query = null )
+	{
+		$val = Validation::forge();
+		$query = null;
+		$products = null;
+
+		$val->add( 'search' );
+
+		if( Input::method() == 'POST' && $val->run() )
+		{
+			$query = $val->validated( 'search' );
+			$products = Model_Product::find( 'all', array(
+				'where' => array(
+					array( "name", "like", "%{$query}%")
+				)
+			));
+		}
+
+		$this->template->title = "Shopping &raquo; Search";
+		$this->template->content = View::forge( 'products/search', array(
+			'query' => $query,
+			'products' => $products
+		));
+	}
+
 }

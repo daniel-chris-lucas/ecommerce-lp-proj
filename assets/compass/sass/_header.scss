@@ -1,6 +1,5 @@
 header {
 	background: url(../img/header-bg.png) repeat-x;
-	overflow: hidden;
 	height: 111px;
 
 	h1 {
@@ -29,10 +28,6 @@ header {
 	}
 }
 
-.search_toggle {
-	display: none;
-}
-
 .login_register {
 	font-size: 12px;
 	@include background-image( linear-gradient( #464e5b, #3d454e ) );
@@ -53,6 +48,38 @@ header {
 		text-decoration: none;
 		@include background-image( linear-gradient( #3d454e, #464e5b ) );
 		@include single-box-shadow( rgba(255, 255, 255, .2), 0, -2px, 2px, 0, inset );
+	}
+}
+
+.login_frame {
+	z-index: 600;
+	height: 183px;
+	width: 490px;
+	background: url(../img/drop-down-bg.png) repeat;
+	border-right: 1px solid #c1c8cf;
+	border-bottom: 1px solid #c1c8cf;
+	@include border-radius( 5px );
+	padding: 20px;
+	position: absolute;
+	top: 65px;
+	margin-left: 338px;
+	display: none;
+
+	h2 { background: none; position: static; }
+
+	.col1 {
+		border-right: 1px solid #e3e6e9;
+		float: left;
+		height: 100%;
+		padding-right: 12px;
+		width: 234px;
+	}
+
+	.col2 {
+		border-left: 1px solid #c3c8ce;
+		padding-left: 10px;
+		width: 230px;
+		float: left;
 	}
 }
 

@@ -27,6 +27,9 @@ class Controller_Admin_Products extends Controller_Admin_Base
 			->add_rule( 'required' )
 			->add_rule( 'min_length', 3 )
 			->add_rule( 'max_length', 255 );
+		$val->add( 'slug', 'Slug' )
+			->add_rule( 'min_length', 3 )
+			->add_rule( 'max_length', 100);
 		$val->add( 'description', 'Description' )
 			->add_rule( 'required' )
 			->add_rule( 'min_length', 10 )
@@ -50,6 +53,7 @@ class Controller_Admin_Products extends Controller_Admin_Base
 			$product->description = $val->validated( 'description' );
 			$product->category_id = $val->validated( 'category' );
 			$product->price = $val->validated( 'price' );
+			$product->slug = $val->validated( 'slug' );
 			$product->save();
 
 			/* start upload images */
@@ -76,17 +80,18 @@ class Controller_Admin_Products extends Controller_Admin_Base
 				foreach( Upload::get_files() as $uploaded_file )
 				{
 					$img = Model_Image::forge();
-					$img->name = $product->category->name . DS . $uploaded_file['saved_as'];
+					$img->name =  $uploaded_file['saved_as'];
 					$img->alt = $val->validated( 'image_alt' . $i );
 					$img->product_id = $product->id;
+					$img->folder = $product->category->name;
 					$img->save();
 
-					Image::load( 'assets/uploads/' . $img->name )
+					Image::load( 'assets/uploads/' . $img->folder . DS . $img->name )
 						->resize( 60 )
 						->save_pa( null, '-thumbnail' );
 
 					/* start check image size */
-					$original_image_size = explode( ' ', getimagesize( 'assets/uploads/' . $img->name )[3] );
+					$original_image_size = explode( ' ', getimagesize( 'assets/uploads/' . $img->folder . DS . $img->name )[3] );
 					list( $image_width, $image_height ) = $original_image_size;
 					$image_width = intval( str_replace( '"', '', explode( '=', $image_width )[1] ) );
 					$image_height = intval( str_replace( '"', '', explode( '=', $image_height )[1] ) );

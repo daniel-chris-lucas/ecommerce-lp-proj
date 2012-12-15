@@ -6,6 +6,11 @@
 		<input type="text" name="name" id="name" class="input-xlarge" placeholder="Product Name" value="<?= $val->validated( 'name' ) ?>">
 		<?php echo $val->error( 'name' ) ? '<span class="help-inline">' . $val->error( 'name' ) . '</span>' : '' ?>
 	</div>
+	<div class="control-group <?php if( $val->error( 'slug' ) ) echo 'error' ?>">
+		<label for="slug">Slug:</label>
+		<input type="text" name="slug" id="slug" class="input-xlarge" placeholder="Product Slug" value="<?= $val->validated( 'slug' ) ?>">
+		<?php echo $val->error( 'slug' ) ? '<span class="help-inline">' . $val->error( 'slug' ) . '</span>' : '' ?>
+	</div>
 	<div class="control-group <?php if( $val->error( 'description' ) ) echo 'error' ?>">
 		<label for="description">Description:</label>
 		<textarea class="input-xxlarge" style="height: 255px;" name="description" id="description" placeholder="Product Description"><?= $val->validated( 'name' ) ?></textarea>
