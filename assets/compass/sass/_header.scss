@@ -62,7 +62,7 @@ header {
 	padding: 20px;
 	position: absolute;
 	top: 65px;
-	margin-left: 338px;
+	right: 0;
 	display: none;
 
 	h2 { background: none; position: static; }
@@ -83,10 +83,19 @@ header {
 	}
 }
 
-#currency {
-	float: right;
-	margin-right: 15px;
-	margin-top: 13px;
+.search_panel {
+	position: absolute;
+	right: 0;
+	margin-top: 62px;
+	background: url(../img/drop-down-bg.png) repeat;
+	width: 340px;
+	padding-left: 14px;
+	padding-top: 15px;
+	z-index: 590;
+	border-right: 1px solid #c1c8cf;
+	border-bottom: 1px solid #c1c8cf;
+	@include border-radius( 5px );
+	display: none;
 }
 
 .cart_status {

@@ -7,6 +7,7 @@
 	@include single-box-shadow( rgba(0, 0, 0, .4), 1px, 1px, 3px );
 	@include transition-duration( .6s );
 	position: relative;
+	margin-bottom: 30px;
 
 	figure {
 		margin: 0 auto;

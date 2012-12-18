@@ -26,7 +26,7 @@
 
         <!-- start main header -->
         <header>
-            <div class="container">
+            <div class="container" style="position: relative;">
                 <!-- start top row of header -->      
                 <?php if( Session::get_flash( 'flash_message' ) ) : ?>
                     <div class="flash_message message_confirm"><?php echo Session::get_flash( 'flash_message' ) ?></div>
@@ -45,6 +45,14 @@
                     </div>
                     <div class="span9">
                         <a href="<?= Uri::create( 'search' ) ?>" class="search">Search</a>
+                        <div class="search_panel">
+                            <?= Form::open( array( 'action' => Uri::create( 'search' ), 'class' => 'form-search' ) ) ?>
+                                <div class="input-append">
+                                    <input type="text" name="search" id="search" placeholder="Search..." class="search-query">
+                                    <button type="submit" class="btn">Search</button>
+                                </div>
+                            </form>
+                        </div>
                         <?php if( !isset( $current_user ) ) : ?>
                             <a href="<?php echo Uri::create( 'users/connect' ) ?>" class="login_register login_button">Login <span>-- or --</span> Register</a>
                             <aside class="login_frame">

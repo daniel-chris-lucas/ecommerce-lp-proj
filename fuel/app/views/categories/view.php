@@ -1,3 +1,9 @@
+<style>
+	#main .span3:nth-child(4n-1) {
+		margin-left: 0;
+	}
+</style>
+
 <div class="title_bg">
     <h2 class="title"><?= $category->name ?></h2>
 </div>

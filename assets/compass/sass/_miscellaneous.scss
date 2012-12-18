@@ -77,6 +77,10 @@ body {
 	}
 }
 
+#main {
+	@extend .clearfix;
+}
+
 #main, .sidebar {
 	float: right;
 }
@@ -96,6 +100,7 @@ body {
 	margin-left: -292px;
 	text-align: center;
 	@include border-radius( 5px );
+	top: 30px;
 
 
 	&.message_confirm {
