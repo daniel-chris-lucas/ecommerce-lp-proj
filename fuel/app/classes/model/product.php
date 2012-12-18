@@ -1,7 +1,13 @@
 <?php
-
+/**
+ * Cree les liens entre les produits, les images et les catégories
+ * Permet de creer des titres optimisés avec les titres entrés à la création du produit
+ */
 class Model_Product extends \Orm\Model
 {
+	/**
+	 * Definition des propriétés de la modèle: utilisé par l'ORM
+	 */
 	protected static $_properties = array(
 		'id',
 		'name',
@@ -24,6 +30,9 @@ class Model_Product extends \Orm\Model
 		),
 	);
 
+	/**
+	 * Création d'un lien entre les catégories et les produits
+	 */
 	protected static $_belongs_to = array(
 	    'category' => array(
 	        'key_from' => 'category_id',
@@ -34,9 +43,17 @@ class Model_Product extends \Orm\Model
 	    )
 	);
 
+	/**
+	 * Création d'un lien entre les produits et les images
+	 */
 	protected static $_has_many = array( 'images' );
 
 
+	/**
+	 * Crée un titre optimisé pour les moteurs de recherche en enlevant les espaces et en mettant des tirets
+	 * @param String $string Le nom du produit
+	 * @return String Le titre optimisé
+	 */
 	public function create_slug( $string ){
 	   $slug=preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
 	   return Str::lower( $slug );

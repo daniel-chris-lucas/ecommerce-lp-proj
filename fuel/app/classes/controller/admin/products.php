@@ -120,15 +120,15 @@ class Controller_Admin_Products extends Controller_Admin_Base
 
 					if( $image_width > 800 && $image_width > $image_height )
 					{
-						Image::load( 'assets/uploads/' . $img->name )
+						Image::load( 'assets/uploads/' . $img->folder . DS . $img->name )
 							->resize( 800 )
-							->save( 'assets/uploads/' . $img->name );
+							->save( 'assets/uploads/' . $img->folder . $img->name );
 					}
 					if( $image_height > 600 && $image_height > $image_width )
 					{
-						Image::load( 'assets/uploads/' . $img->name )
+						Image::load( 'assets/uploads/' . $img->folder . DS . $img->name )
 							->resize( null, 600 )
-							->save( 'assets/uploads/' . $img->name );
+							->save( 'assets/uploads/' . $img->folder . DS . $img->name );
 					}
 					/* Fin du redimmensionnement des images*/
 

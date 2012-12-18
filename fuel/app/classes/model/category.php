@@ -1,8 +1,15 @@
 <?php
-
+/**
+ * Cree les liens entre les categories, les sous categories et les produits.
+ * Permet de compter le nombre de categories, de trouver les sous categories des categories et de générer les menus
+ * en order alphabétique par catégorie puis sous catégorie
+ */
 class Model_Category extends \Orm\Model
 {
 
+	/**
+	 * Definition des propriétés de la modèle: utilisé par l'ORM
+	 */
 	protected static $_properties = array(
 		'id',
 		'name',
@@ -11,6 +18,9 @@ class Model_Category extends \Orm\Model
 	);
 
 
+	/**
+	 * Création d'un lien entre les sous catégories et les catégories
+	 */
 	protected static $_belongs_to = array(
 	    'parent' => array(
 	        'key_from' => 'parent_id',
@@ -21,9 +31,16 @@ class Model_Category extends \Orm\Model
 	    )
 	);
 
+	/**
+	 * Création d'un lien entre les catégories et les produits
+	 */
 	protected static $_has_many = array( 'products' );
 
 
+	/**
+	 * La fonction compte le nombre de catégories qui existent dans la BDD
+	 * @return Integer Le nombre de catégories dans la BDD
+	 */
 	public static function count_categories()
 	{
 		$result = DB::select( DB::expr( 'COUNT(*) as count' ) )->from( 'categories' )->execute()->current();
@@ -31,6 +48,11 @@ class Model_Category extends \Orm\Model
 	}
 
 
+	/**
+	 * La fonction trouve les sous catégories d'une catégorie
+	 * @param  Integer L'ID de la catégorie principale
+	 * @return Array Les sous catégories de la catégorie
+	 */
 	public static function find_children( $parent_id )
 	{
 		$children = DB::select( 'id' )
@@ -48,6 +70,10 @@ class Model_Category extends \Orm\Model
 	}
 
 
+	/**
+	 * La foction cherche les Catégories principales puis les sous catégories
+	 * @return Array Les catégories puis sous catégories par ordre alphabétique
+	 */
 	public static function generate_categories_subcategories()
 	{
 		$result = DB::query('

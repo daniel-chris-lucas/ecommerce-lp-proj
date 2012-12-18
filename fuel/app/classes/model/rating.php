@@ -1,7 +1,12 @@
 <?php
-
+/**
+ * Cree les liens entre les avis et les utilisateurs
+ */
 class Model_Rating extends \Orm\Model
 {
+	/**
+	 * Definition des propriétés de la modèle: utilisé par l'ORM
+	 */
 	protected static $_properties = array(
 		'id',
 		'user_id',
@@ -23,5 +28,8 @@ class Model_Rating extends \Orm\Model
 		),
 	);
 
+	/**
+	 * Création d'un lien entre les utilisateurs et les avis
+	 */
 	protected static $_belongs_to = array( 'user' );
 }

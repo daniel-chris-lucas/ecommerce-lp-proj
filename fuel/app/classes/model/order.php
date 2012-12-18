@@ -1,8 +1,13 @@
 <?php
-
+/**
+ * Cree les liens entre les produits, les commandes et les utilisateurs
+ */
 class Model_Order extends \Orm\Model
 {
 
+	/**
+	 * Definition des propriétés de la modèle: utilisé par l'ORM
+	 */
 	protected static $_properties = array(
 		'id',
 		'user_id',
@@ -22,8 +27,14 @@ class Model_Order extends \Orm\Model
 		),
 	);
 
+	/**
+	 * Création d'un lien entre les commandes et les produits
+	 */
 	protected static $_has_many = array( 'orderproducts' );
 
+	/**
+	 * Création d'un lien entre utilisateurs et les commandes
+	 */
 	protected static $_belongs_to = array( 'user' );
 
 }
