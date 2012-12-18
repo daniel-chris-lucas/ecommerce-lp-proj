@@ -58,7 +58,7 @@
                             <aside class="login_frame">
                                 <div class="col1">
                                     <h2 class="title">Login</h2>
-                                    <?= Form::open( 'users/quick_login' ) ?>
+                                    <?= Form::open( 'users/connect' ) ?>
                                         <input type="text" name="username" id="username" placeholder="Username">
                                         <input type="password" name="password" id="password" placeholder="Password">
                                         <button type="submit" name="login_submit" class="btn btn-danger">Sign In</button>

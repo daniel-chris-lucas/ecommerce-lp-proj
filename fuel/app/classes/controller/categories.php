@@ -1,10 +1,15 @@
 <?php
-
+/**
+ * Les pages qui affichent les categories
+ */
 class Controller_Categories extends Controller_Base
 {
 
 	/**
-	 * Allow a guest visitor to connect to the site using a username and a password
+	 * Cette fonction sert a afficher la liste de toutes les categories quand l'utilisateur clique sur Categories dans le menu
+	 * principal.
+	 * La fonction ne sert que si l'utilisateur a désactivé le javaScript, sinon les categories sont affichés tout de suite quand le
+	 * souris survol le menu.
 	 */
 	public function action_index()
 	{
@@ -19,6 +24,10 @@ class Controller_Categories extends Controller_Base
 	}
 
 
+	/**
+	 * Affiche tous les produits dans la catégorie.
+	 * @param String $category_slug le titre optimisé du categorie
+	 */
 	public function action_view( $category_slug )
 	{
 		$category = Model_Category::find( 'first', array(

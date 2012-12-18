@@ -20,6 +20,10 @@
 	});
 
 	
+	$( '.drop_menu' ).on( 'click', function( evt ) {
+		evt.preventDefault();
+	});
+
 	$( 'li.drop_menu' ).hover( function() {
 		$( 'div.megamenu' ).stop().fadeIn();
 	}, function() {
@@ -43,10 +47,20 @@
 
 
 	$('.flexslider').flexslider({
-		animation: 'slide'
+		animation: 'slide',
+		slideshow: true,
+		slideshowSpeed: 5000
 	});
 
 
 	$( '.flash_message' ).show().delay( 5000 ).fadeOut( 300 );
+
+
+	$(".scrollable").scrollable({
+		circular: true
+	}).autoscroll({
+		autoplay: true,
+		interval: 5000
+	});
 
 })( jQuery );
