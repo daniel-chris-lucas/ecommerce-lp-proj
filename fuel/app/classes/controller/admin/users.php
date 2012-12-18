@@ -1,12 +1,20 @@
 <?php
-
+/**
+ * Contient les pages permettant de voir tous les utilisateurs, de créer des utilisateurs, de modifier des utilisateurs, et de supprimer
+ * des utilisateurs
+ */
 class Controller_Admin_Users extends Controller_Admin_Base
 {
 
+	/**
+	 * Affiche la page qui permet de voir tous les utilisateurs qui existent sur le site
+	 */
 	public function action_index()
 	{
+		// Il faut compter le nombre d'utilisateurs pour que la pagination puisse faire les calculs
 		$num_users = Model_User::count_users();
 
+		// La configuration pour la pagination
 		$config = array(
 			'pagination_url' => Uri::create( 'admin/users/index' ),
 			'total_items' => $num_users,
@@ -32,14 +40,15 @@ class Controller_Admin_Users extends Controller_Admin_Base
 			),
 		);
 
+		// Pour éviter d'avoir trop d'utilisateurs sur la page on utilise la pagination
 		Pagination::set_config( $config );
-
 		$users = Model_User::find()
 						->limit( Pagination::$per_page )
 						->offset( Pagination::$offset )
 						->order_by( 'id', 'asc' )
 						->get();
 
+		// Affichage de la page
 		$this->template->title = 'Admin &raquo; Users';
 		$this->template->content = View::forge( 'admin/users/index', array(
 			'users' => $users
@@ -47,6 +56,9 @@ class Controller_Admin_Users extends Controller_Admin_Base
 	}
 
 
+	/**
+	 * Affiche la page permettant de voir les informations détaillés d'un utilisateur
+	 */
 	public function action_view( $user_id )
 	{
 		$user = Model_User::find( $user_id );
@@ -58,13 +70,17 @@ class Controller_Admin_Users extends Controller_Admin_Base
 	}
 
 
+	/**
+	 * Affiche la page de modification d'utilisateurs
+	 * @param Integer $user_id L'ID du pays à modifier
+	 */
 	public function action_edit( $user_id )
 	{
+		// Chercher les informations sur l'utilisateur dans la BDD
 		$user = Model_User::find( $user_id );
 
-		// form validation
+		// Définition des règles de validation
 		$val = Validation::forge();
-
 		$val->add( 'first_name', 'First Name' )
 			->add_rule( 'required' )
 			->add_rule( 'min_length', 2 )
@@ -123,7 +139,7 @@ class Controller_Admin_Users extends Controller_Admin_Base
 			->add_rule( 'numeric_min', 1 )
 			->add_rule( 'numeric_max', 5 );
 
-		// if eveything in the form is correct save the information
+		// Si tous les champs sont correctement remplis on peut modifier les informations de l'utilisateur
 		if( Input::method() == 'POST' && $val->run() )
 		{
 			$salt = 'j1V]hr$bvVL_{lj_~P^(ogTfm$Gie}QyyKZw$zWcWdaR';
@@ -150,7 +166,7 @@ class Controller_Admin_Users extends Controller_Admin_Base
 			Response::redirect( Uri::create( 'admin/users' ) );
 		}
 
-		// generate information for date of birth
+		// Creation des jours, mois et années pour la date de naissance de l'utilisateur
 		for( $i = 1; $i <= 31; $i++ )
 		{
 			$birth_days[] = $i;
@@ -162,16 +178,16 @@ class Controller_Admin_Users extends Controller_Admin_Base
 			$birth_years[] = $i;
 		}
 
-		// fetch list of countries from the database
+		// Chercher les pays dans la BDD
 		$countries = Model_Country::find('all', array( 'order_by' => array( 'name' => 'asc' ) ) );
 
-		// fetch list of roles from the database
+		// Chercher les roles dans la BDD: utilisateur, moderator, admin...
 		$roles = Model_Role::find( 'all', array( 'order_by' => array( 'name' => 'asc' ) ) );
 
-		// split stored date of birth
+		// Comme les dates dans la BDD sont sous la forme dd-mm-yyyy il faut séparer les informations avec les -
 		$dob = explode( '-', $user->date_of_birth );
 
-
+		// Affichage de la page de modification
 		$this->template->title = 'Admin &raquo; Users &raquo; Edit';
 		$this->template->content = View::forge( 'admin/users/edit', array(
 			'user' => $user,
@@ -187,11 +203,17 @@ class Controller_Admin_Users extends Controller_Admin_Base
 		));
 	}
 
-
+	/**
+	 * La fonction permet de supprimer un utilisateur
+	 * @param Integer $country_id L'ID de l'utilisateur à supprimer
+	 */
 	public function action_delete( $user_id )
 	{
+		// Chercher la catégorie à supprimer dans la BDD
 		$user = Model_User::find( $user_id );
 
+		// Empecher la suppression des admins et des moderateurs. Il faut les remettre en tant qu'utilisateur régulier
+		// pour pouvoir les supprimer
 		if( $user->role->name === 'administrator' || $user->role->name === 'moderator' )
 			Session::set_flash( 'flash_message_error', 'User could not be deleted. Please remove user privileges to delete' );
 		else
@@ -200,7 +222,7 @@ class Controller_Admin_Users extends Controller_Admin_Base
 			Session::set_flash( 'flash_message', 'User has been successfully deleted' );
 		}
 			
-			
+		// Rediriger l'admin vers la liste des utilisateurs	
 		Response::redirect( Uri::create( 'admin/users' ) );
 	}
 

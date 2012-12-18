@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Tous les pages  de la partie admin lancent cette classe avant d'etre exécuté.
+ * La classe sert a appeler la vue template qui contient toute la partie du vue qui ne change pas.
+ * Elle sert aussi a creer les elements du menu, voir si l'utilisateur est connecté, et voir si les
+ * utilisateurs connectés sont des administrateurs ou des modérateurs du site.
+ */
 class Controller_Admin_Base extends Controller_Template
 {
 
